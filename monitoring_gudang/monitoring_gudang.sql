@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2022 at 06:00 AM
+-- Generation Time: Jul 20, 2022 at 06:41 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -44,7 +44,8 @@ INSERT INTO `categories` (`id`, `nama_kategori`, `deskripsi_barang`, `created_at
 (2, 'Sepatu Boots', 'Ini dibuat untuk keamanan sepatu boots', NULL, NULL),
 (3, 'Helm', 'Ini dibuat untuk keamanan helm', NULL, NULL),
 (4, 'Kacamata', 'Ini dibuat untuk keamanan kacamata', NULL, NULL),
-(5, 'Sarung Tangan', 'Ini dibuat untuk keamanan sarung tangan', NULL, NULL);
+(5, 'Sarung Tangan', 'Ini dibuat untuk keamanan sarung tangan', NULL, NULL),
+(6, 'Rompi Kerja', 'Ini adalah rompi kerja untuk keselamatan para karyawan', '2022-07-19 21:05:15', '2022-07-19 21:23:10');
 
 -- --------------------------------------------------------
 
@@ -167,7 +168,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
