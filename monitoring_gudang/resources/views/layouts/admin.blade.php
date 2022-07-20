@@ -21,7 +21,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="../assets/img/favicon.png">
     <title>
-        Material Dashboard 2 by Creative Tim
+        PT Berkat Keselamatan Dunia
     </title>
     <!--     Fonts and icons     -->
     <link rel="stylesheet" type="text/css"
@@ -81,7 +81,7 @@
         <div class="  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/">
+                    <a class="nav-link text-white" href="/admin">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">dashboard</i>
                         </div>
@@ -90,7 +90,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/">
+                    <a class="nav-link text-white" href="">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">person</i>
                         </div>
@@ -99,7 +99,16 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{url('item')}}">
+                    <a class="nav-link text-white " href="/categories">
+                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                    <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
+                    </div>
+                    <span class="nav-link-text ms-1">Kategori Barang</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="{{url('items')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -119,7 +128,7 @@
                 <li class="nav-item">
                     <a class="nav-link text-white " href="">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">view_in_ar</i>
+                            <i class="material-icons opacity-10">receipt_long</i>
                         </div>
                         <span class="nav-link-text ms-1">Transaksi</span>
                     </a>

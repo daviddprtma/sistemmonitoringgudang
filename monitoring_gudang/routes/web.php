@@ -13,8 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/admin', function () {
     return view('welcome');
 });
 
-Route::resource('item','ItemController');
+Route::resource('items','ItemController');
+
+Route::resource('categories','CategoryController');

@@ -99,7 +99,6 @@
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
                                 role="alert">
                                 {{ session('success') }}
-
                             </div>
                         @endif
                         <div class="row">
@@ -113,30 +112,25 @@
                                     {{ session('delete') }}
                                 </div>
                             @endif
-                            <div class="col-lg-6 col-7">
 
-                                <h6>Category</h6>
+                            <h6>Category</h6>
+                            <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
+                                <a href="{{url('categories/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
+                                    Tambah Kategori
+                                </a>
+                            </div>
+
+                            <div class="col-lg-6 col-7">
+                            
                                 {{-- <p class="text-sm mb-0">
                                     <i class="fa fa-check text-info" aria-hidden="true"></i> Terdapat<span
                                         class="font-weight-bold ms-1">{{ count($cate) }} macam barang</span> pada saat
                                     ini
                                 </p> --}}
                             </div>
-                            <div class="col-lg-6 col-5 my-auto text-end">
-                                <div class="dropdown float-lg-end pe-4">
-                                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <i class="fa fa-ellipsis-v text-secondary"></i>
-                                    </a>
-                                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                        <li><a class="dropdown-item border-radius-md" href="/catecreate">Tambah Category</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="/report">Report</a></li>
-
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
+
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive">
                             <table class="table align-items-center mb-0">
@@ -147,11 +141,15 @@
 
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nama Barang</th>
+                                            Nama Kategori</th>
 
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Harga Barang</th>
+                                            Deskripsi Kategori</th>
+
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -168,45 +166,24 @@
                                             </td>
 
                                             <td class="align-middle text-sm">
-                                                <span class="text-xs font-weight-bold">{{ $d->nama_barang }}
+                                                <span class="text-xs font-weight-bold">{{ $d->nama_kategori }}
                                                 </span>
                                             </td>
                                             <td class="align-middle text-sm">
-                                                <span class="text-xs font-weight-bold">{{ $d->harga_barang }}</span>
+                                                <span class="text-xs font-weight-bold">{{ $d->deskripsi_barang }}</span>
                                             </td>
 
 
-                                            {{-- <td class="align-middle ">
-                                                <div class="progress-wrapper d-flex justify-content-center mx-3">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <form action="/mg-category-edit/{{ $d->id }}">
-                                                                <button type="submit" class="btn btn-primary"
-                                                                    style="min-width: 80px;">
-                                                                    {{ __('Edit') }}
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <form action="/mg-category-delete/{{ $c->id }}">
-                                                                @method('delete')
-                                                                @csrf
-
-
-                                                                <button type="submit" class="btn btn-danger"
-                                                                    style="min-width: 80px;">
-                                                                    {{ __('Delete') }}
-                                                                </button>
-                                                            </form>
-                                                        </div>
-
-                                                    </div>
-
-
+                                            <td class="align-middle ">
+                                                <div class="ms-auto text-end">
+                                                    <a class="btn btn-link text-dark px-3 mb-0">
+                                                        <i class="material-icons text-sm me-2">edit</i>Edit</a>
+                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" >
+                                                        <i class="material-icons text-sm me-2">delete</i>Hapus</a>
                                                 </div>
                                             </td>
 
- --}}
+
 
                                         </tr>
                                     @endforeach
