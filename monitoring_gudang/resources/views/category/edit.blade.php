@@ -104,8 +104,9 @@
         </div>
 
         <div class="card card-body mx-3 mx-md-4 mt-n6 ">
-            <form method="POST" action="{{ url('categories') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('categories/'.$data->id) }}" enctype="multipart/form-data">
                 @csrf
+                @method("PUT")
                 <div class="row gx-4 mb-2">
                     <div class="col-auto">
 
@@ -115,7 +116,7 @@
                             <h5 class="mb-1">
                                 <label>Nama Kategori</label>
                                 <input type="text" class="form-control" name="nama_kategori" placeholder="Nama Kategori"
-                                    value="">
+                                    value="{{$data->nama_kategori}}">
                             </h5>
 
                         </div>
@@ -127,7 +128,7 @@
                             <div class="form-group">
                                 <label>Deskripsi</label>
                                 <input type="text" class="form-control" name="deskripsi_barang" placeholder="Deskripsi Kategori"
-                                    value="">
+                                    value="{{$data->deskripsi_barang}}">
                             </div>
                         </div>
                     </div>
@@ -136,7 +137,7 @@
 
                     <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Tambah Kategori</button>
+                            <button type="submit" class="btn btn-primary btn-round">Update Kategori</button>
                                 <a href="{{url('categories')}}" class="btn btn-warning" type="button">
                                     Kembali</a>
                         </div>

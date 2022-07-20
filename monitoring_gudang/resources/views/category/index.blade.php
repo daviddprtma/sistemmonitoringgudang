@@ -95,10 +95,10 @@
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                 <div class="card">
                     <div class="card-header pb-0">
-                        @if (session()->has('success'))
+                        @if (session()->has('error'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
                                 role="alert">
-                                {{ session('success') }}
+                                {{ session('error') }}
                             </div>
                         @endif
                         <div class="row">
@@ -106,6 +106,12 @@
                                 <div class="alert alert-success d-flex justify-content-center text-light">
                                     {{ session('status') }}
                                 </div>
+                            @endif
+
+                            @if (session('sunting'))
+                            <div class="alert alert-warning d-flex justify-content-center text-light">
+                                {{ session('sunting') }}
+                            </div>
                             @endif
                             @if (session('delete'))
                                 <div class="alert alert-danger d-flex justify-content-center text-light">
@@ -176,10 +182,16 @@
 
                                             <td class="align-middle ">
                                                 <div class="ms-auto text-end">
-                                                    <a class="btn btn-link text-dark px-3 mb-0">
+                                                    <a href="{{url('categories/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
                                                         <i class="material-icons text-sm me-2">edit</i>Edit</a>
-                                                    <a class="btn btn-link text-danger text-gradient px-3 mb-0" >
-                                                        <i class="material-icons text-sm me-2">delete</i>Hapus</a>
+
+                                                        <form method="POST" action="{{url('categories/'.$d->id)}}">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0" 
+                                                            onclick="if(!confirm('apakah anda yakin untuk menghapus data kategori ini?')) return false;">
+                                                                <i class="material-icons text-sm me-2">delete</i>Hapus</a>
+                                                        </form>
                                                 </div>
                                             </td>
 

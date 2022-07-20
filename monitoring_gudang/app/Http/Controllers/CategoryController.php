@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use Exception;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -66,6 +67,9 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+        // dd($category);
+        $data = $category;
+        return view('category.edit',compact('data'));
     }
 
     /**
@@ -78,6 +82,10 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
+        $category->nama_kategori = $request->get('nama_kategori');
+        $category->deskripsi_barang = $request->get('deskripsi_barang');
+        $category->save();
+        return redirect()->route('categories.index')->with('sunting','Kategori Berhasil Diupdate Yang Terbaru.');
     }
 
     /**
@@ -89,5 +97,13 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
+        try{
+            $category->delete();
+            return redirect()->route('categories.index')->with('delete','Data kategori berhasil dihapus');
+        }
+        catch(\PDOException $e){
+            $msg = "Data kategori tidak dapat dihapus. Pastikan data kategori ini tidak terikat dengan data yang lain";
+            return redirect()->route('categories.index')->with('error',$msg);
+        }
     }
 }
