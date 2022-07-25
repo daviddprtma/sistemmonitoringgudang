@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 20, 2022 at 06:41 AM
+-- Generation Time: Jul 25, 2022 at 05:17 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -98,7 +98,34 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (2, '2019_08_19_000000_create_failed_jobs_table', 1),
 (4, '2022_07_18_035111_create_items_table', 2),
 (5, '2022_07_18_035210_create_categories_table', 2),
-(6, '2022_07_18_035321_add_categoryid_column', 2);
+(6, '2022_07_18_035321_add_categoryid_column', 2),
+(9, '2022_07_22_033209_create_profiles_table', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `profiles`
+--
+
+CREATE TABLE `profiles` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nama_perusahaan` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lokasi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `alamat` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jam_operasi` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `telepon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `provinsi` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `foto` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `profiles`
+--
+
+INSERT INTO `profiles` (`id`, `nama_perusahaan`, `lokasi`, `alamat`, `jam_operasi`, `telepon`, `provinsi`, `created_at`, `updated_at`, `foto`) VALUES
+(1, 'PT. BERKAT KESELAMATAN DUNIA', 'Ruko Graha Asri', 'Graha Asri, Blok K6 Ruko, Jl. Ngagel No.179 - 183, Ngagel, Kec. Wonokromo, Kota SBY, Jawa Timur 60246', 'Senin	08.00-17.00\r\n                              Selasa 08.00-17.00\r\n                              Rabu 08.00-17.00\r\n                              Kamis	08.00-17.00\r\n                              Jumat	08.00-17.00\r\n                              Sabtu	Tutup\r\n                              Minggu Tutup', '(031)5022526', 'Jawa Timur', NULL, '2022-07-24 20:13:26', '1658718806_ptberkatkeselamatandunia.jpg');
 
 -- --------------------------------------------------------
 
@@ -154,6 +181,12 @@ ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `profiles`
+--
+ALTER TABLE `profiles`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -186,7 +219,13 @@ ALTER TABLE `items`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `profiles`
+--
+ALTER TABLE `profiles`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
