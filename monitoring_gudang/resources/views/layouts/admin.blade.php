@@ -48,7 +48,7 @@
             <div class="container-fluid py-1 px-3">
                 <nav aria-label="breadcrumb">
                     
-                    <h6 class="font-weight-bolder mb-0">Ajegile</h6>
+                    <h6 class="font-weight-bolder mb-0">PT Berkat Keselamatan Dunia</h6>
                 </nav>
                 <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                     <div class="ms-md-auto pe-md-3 d-flex align-items-center">
@@ -90,7 +90,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="">
+                    <a class="nav-link text-white" href="{{url('profiles')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">person</i>
                         </div>

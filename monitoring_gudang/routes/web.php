@@ -20,3 +20,5 @@ Route::get('/admin', function () {
 Route::resource('items','ItemController');
 
 Route::resource('categories','CategoryController');
+
+Route::resource('profiles','ProfileController');
