@@ -132,6 +132,14 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Foto Barang</label>
+                                <input type="file" class="form-control" id="foto_barang" name="foto_barang">
+                            </div>
+                        </div>
+                    </div>
 
 
                     <div class="row">

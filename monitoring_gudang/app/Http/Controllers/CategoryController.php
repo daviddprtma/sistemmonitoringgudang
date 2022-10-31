@@ -41,6 +41,14 @@ class CategoryController extends Controller
     {
         //
         $data = new Category();
+
+        $file = $request -> file('foto_barang');
+        $imgFolder = 'images';
+        $imgFile = time()."_".$file->getClientOriginalName();
+        $file->move($imgFolder,$imgFile);
+        $data->foto_barang = $imgFile;
+
+
         $data->nama_kategori = $request->get('nama_kategori');
         $data->deskripsi_barang = $request->get('deskripsi_barang');
         $data->save();
@@ -106,4 +114,18 @@ class CategoryController extends Controller
             return redirect()->route('categories.index')->with('error',$msg);
         }
     }
+
+    public function changeFoto(Request $request){
+        $id = $request->get('id');
+        $file = $request -> file('foto_barang');
+        $imgFolder = 'images';
+        $imgFile = time()."_".$file->getClientOriginalName();
+        $file->move($imgFolder,$imgFile);
+        
+        $category = Category::find($id);
+        $category->foto_barang = $imgFile;
+        $category->save();
+        return redirect()->route('categories.index')->with('sunting','Foto Barang berhasil diupdate');
+    }    
 }
+

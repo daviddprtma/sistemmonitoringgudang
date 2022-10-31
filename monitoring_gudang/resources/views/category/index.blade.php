@@ -147,11 +147,15 @@
 
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nama Kategori</th>
+                                            Gambar</th>
 
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Deskripsi Kategori</th>
+                                            Nama Kategori</th>
+                                            
+                                        <th
+                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Deskripsi Kategori</th>
 
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -170,6 +174,42 @@
                                                     </div>
                                                 </div>
                                             </td>
+                                            <td>
+                                                
+                                                <img src="{{asset('images/'.$d->foto_barang)}}" height="40px">
+                                                
+                                                <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-xs btn-default">
+                                                    Ubah Gambar</a>
+                                                <div class="modal fade" id="modalChange_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
+                                                    
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content" >
+                                                      <form enctype="multipart/form-data" role="form" method="POST" action="{{route('categories.changeFoto')}}">
+                                                      <div class="modal-header">
+                                                        <button type="button" class="close" 
+                                                          data-dismiss="modal" aria-hidden="true"></button>
+                                                        <h4 class="modal-title">Ubah Gambar untuk {{$d->nama_kategori}}</h4>
+                                                      </div>
+                                                      
+                                                      <div class="modal-body">
+                                                          @csrf
+                                                          <div class="form-body">
+                                                              <div class="form-group">
+                                                                  <label for="exampleInputEmail1">Foto Barang</label>
+                                                                  <input type="file" class="form-control" id="foto_barang" name="foto">
+                                                                  <input type="hidden" id="id" name="id" value="{{$d->id}}">
+                                                              </div>
+                                                          </div>                                
+                                                          
+                                                      </div>
+
+                                                      <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-warning">Unggah Foto Baru</button>
+                                                        <a data-dismiss="modal" class="btn btn-default">Batal</a>
+                                                      </div>
+                                                      
+                                          </td>
+                                          
 
                                             <td class="align-middle text-sm">
                                                 <span class="text-xs font-weight-bold">{{ $d->nama_kategori }}
@@ -178,11 +218,12 @@
                                             <td class="align-middle text-sm">
                                                 <span class="text-xs font-weight-bold">{{ $d->deskripsi_barang }}</span>
                                             </td>
-
+                                          
 
                                             <td class="align-middle ">
                                                 <div class="ms-auto text-end">
                                                     <a href="{{url('categories/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
+                                                        
                                                         <i class="material-icons text-sm me-2">edit</i>Edit</a>
 
                                                         <form method="POST" action="{{url('categories/'.$d->id)}}">

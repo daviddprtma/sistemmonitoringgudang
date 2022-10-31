@@ -16,7 +16,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="">
+                    <a class="nav-link text-white" href="{{url('profiles')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">person</i>
                         </div>
@@ -122,7 +122,7 @@
                                     ini
                                 </p> --}}
                             </div>
-                            <div class="col-lg-6 col-5 my-auto text-end">
+                            {{-- <div class="col-lg-6 col-5 my-auto text-end">
                                 <div class="dropdown float-lg-end pe-4">
                                     <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown"
                                         aria-expanded="false">
@@ -134,7 +134,7 @@
 
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                     <div class="card-body px-0 pb-2">
