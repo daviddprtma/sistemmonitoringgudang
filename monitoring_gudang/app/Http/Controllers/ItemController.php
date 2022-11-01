@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Item;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,8 @@ class ItemController extends Controller
     {
         //
         $data = Item::all();
-        return view('item.index',['data'=>$data]);
+        $cat = Category::all();
+        return view('item.index',['data'=>$data,'cat'=>$cat]);
     }
 
     /**
@@ -27,6 +29,8 @@ class ItemController extends Controller
     public function create()
     {
         //
+        $cat = Category::all();
+        return view('item.create',['cat'=>$cat]);
     }
 
     /**
@@ -38,6 +42,17 @@ class ItemController extends Controller
     public function store(Request $request)
     {
         //
+        $data = new Item();
+        $file = $request ->file('gambar_stok');
+        $imgFolder = 'images';
+        $imgFile = time()."_".$file->getClientOriginalName();
+        $file->move($imgFolder,$imgFile);
+        $data->gambar_stok = $imgFile;
+        $data->nama_barang = $request->get('nama_barang');
+        $data->stok_barang = $request->get('stok_barang');
+        $data->category_id = $request->get('category_id');
+        $data->save();
+        return redirect()->route('item.index')->with('success',"Stok barang:.$data->nama_barang. berhasil ditambahkan");
     }
 
     /**

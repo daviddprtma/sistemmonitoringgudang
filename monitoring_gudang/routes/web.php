@@ -25,3 +25,6 @@ Route::resource('profiles','ProfileController');
 
 Route::post('/category/changeFoto','CategoryController@changeFoto')
 ->name('categories.changeFoto');
+
+Route::post('/item/changeFoto','ItemController@changeFoto')
+->name('items.changeFoto');

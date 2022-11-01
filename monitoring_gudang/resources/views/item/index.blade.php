@@ -115,26 +115,13 @@
                             @endif
                             <div class="col-lg-6 col-7">
 
-                                <h6>Category</h6>
-                                {{-- <p class="text-sm mb-0">
-                                    <i class="fa fa-check text-info" aria-hidden="true"></i> Terdapat<span
-                                        class="font-weight-bold ms-1">{{ count($cate) }} macam barang</span> pada saat
-                                    ini
-                                </p> --}}
-                            </div>
-                            {{-- <div class="col-lg-6 col-5 my-auto text-end">
-                                <div class="dropdown float-lg-end pe-4">
-                                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown"
-                                        aria-expanded="false">
-                                        <i class="fa fa-ellipsis-v text-secondary"></i>
+                                <h6>Stok Barang</h6>
+                                <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
+                                    <a href="{{url('items/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
+                                        Tambah Stok Barang
                                     </a>
-                                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                                        <li><a class="dropdown-item border-radius-md" href="/catecreate">Tambah Category</a></li>
-                                        <li><a class="dropdown-item border-radius-md" href="/report">Report</a></li>
-
-                                    </ul>
                                 </div>
-                            </div> --}}
+                            </div>
                         </div>
                     </div>
                     <div class="card-body px-0 pb-2">
@@ -142,16 +129,21 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Id</th>
-
+                                        <th
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Gambar </th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Nama Barang</th>
 
                                         <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Jumlah Stok Barang
+                                        </th>
+
+                                        <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Harga Barang</th>
+                                            Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -159,55 +151,69 @@
                                         {{-- {{ dd($m) }} --}}
                                         <tr>
                                             <td>
-                                                <div class="d-flex px-2 py-1">
+                                                
+                                                <img src="{{asset('images/'.$d->gambar_stok)}}" height="90px">
+                                                
+                                                <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-xs btn-default">
+                                                    Ubah Gambar</a>
+                                                <div class="modal fade" id="modalChange_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
+                                                    
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content" >
+                                                      <form method="POST" enctype="multipart/form-data" action="{{route('items.changeFoto')}}" role="form"  >
+                                                      <div class="modal-header">
+                                                        <button type="button" class="close" 
+                                                          data-dismiss="modal" aria-hidden="true"></button>
+                                                        <h4 class="modal-title">Ubah Gambar untuk {{$d->nama_barang}}</h4>
+                                                      </div>
 
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm mx-2">{{ $d->id }}.</h6>
+                                                      <div class="modal-body">
+                                                          @csrf
+                                                          <div class="form-body">
+                                                              <div class="form-group">
+                                                                  <label for="exampleInputEmail1">Foto Barang</label>
+                                                                  <input type="file" class="form-control" id="gambar_stok" name="gambar_stok">
+                                                                  <input type="hidden" id="id" name="id" value="{{$d->id}}">
+                                                              </div>
+                                                          </div>                                
+                                                          
+                                                      </div>
+
+                                                      <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-warning">Unggah Foto Baru</button>
+                                                        <a data-dismiss="modal" class="btn btn-default">Batal</a>
+                                                      </div>
+                                                      </form>
                                                     </div>
-                                                </div>
-                                            </td>
-
+                                                  </div>
+                                                </div>           
+                                          </td>
+                                          
                                             <td class="align-middle text-sm">
                                                 <span class="text-xs font-weight-bold">{{ $d->nama_barang }}
                                                 </span>
                                             </td>
+                                            
                                             <td class="align-middle text-sm">
-                                                <span class="text-xs font-weight-bold">{{ $d->harga_barang }}</span>
+                                                <span>{{ $d->stok_barang }}
+                                                </span>
                                             </td>
 
+                                            <td class="align-middle ">
+                                                <div class="ms-auto text-end">
+                                                    <a href="{{url('items/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
+                                                        
+                                                        <i class="material-icons text-sm me-2">edit</i>Edit</a>
 
-                                            {{-- <td class="align-middle ">
-                                                <div class="progress-wrapper d-flex justify-content-center mx-3">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <form action="/mg-category-edit/{{ $d->id }}">
-                                                                <button type="submit" class="btn btn-primary"
-                                                                    style="min-width: 80px;">
-                                                                    {{ __('Edit') }}
-                                                                </button>
-                                                            </form>
-                                                        </div>
-                                                        <div class="col-sm-6">
-                                                            <form action="/mg-category-delete/{{ $c->id }}">
-                                                                @method('delete')
-                                                                @csrf
-
-
-                                                                <button type="submit" class="btn btn-danger"
-                                                                    style="min-width: 80px;">
-                                                                    {{ __('Delete') }}
-                                                                </button>
-                                                            </form>
-                                                        </div>
-
-                                                    </div>
-
-
+                                                        <form method="POST" action="{{url('items/'.$d->id)}}">
+                                                            @csrf
+                                                            @method("DELETE")
+                                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0" 
+                                                            onclick="if(!confirm('apakah anda yakin untuk menghapus data stok barang ini?')) return false;">
+                                                                <i class="material-icons text-sm me-2">delete</i>Hapus</a>
+                                                        </form>
                                                 </div>
                                             </td>
-
- --}}
-
                                         </tr>
                                     @endforeach
 

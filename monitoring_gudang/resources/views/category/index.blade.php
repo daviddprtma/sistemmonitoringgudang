@@ -142,9 +142,6 @@
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Id</th>
-
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Gambar</th>
@@ -166,17 +163,10 @@
                                     @foreach ($data as $d)
                                         {{-- {{ dd($m) }} --}}
                                         <tr>
-                                            <td>
-                                                <div class="d-flex px-2 py-1">
-
-                                                    <div class="d-flex flex-column justify-content-center">
-                                                        <h6 class="mb-0 text-sm mx-2">{{ $d->id }}.</h6>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                            
                                             <td>
                                                 
-                                                <img src="{{asset('images/'.$d->foto_barang)}}" height="40px">
+                                                <img src="{{asset('images/'.$d->foto_barang)}}" height="90px">
                                                 
                                                 <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-xs btn-default">
                                                     Ubah Gambar</a>
@@ -184,19 +174,19 @@
                                                     
                                                   <div class="modal-dialog">
                                                     <div class="modal-content" >
-                                                      <form enctype="multipart/form-data" role="form" method="POST" action="{{route('categories.changeFoto')}}">
+                                                      <form method="POST" enctype="multipart/form-data" action="{{route('categories.changeFoto')}}" role="form"  >
                                                       <div class="modal-header">
                                                         <button type="button" class="close" 
                                                           data-dismiss="modal" aria-hidden="true"></button>
                                                         <h4 class="modal-title">Ubah Gambar untuk {{$d->nama_kategori}}</h4>
                                                       </div>
-                                                      
+
                                                       <div class="modal-body">
                                                           @csrf
                                                           <div class="form-body">
                                                               <div class="form-group">
                                                                   <label for="exampleInputEmail1">Foto Barang</label>
-                                                                  <input type="file" class="form-control" id="foto_barang" name="foto">
+                                                                  <input type="file" class="form-control" id="foto_barang" name="foto_barang">
                                                                   <input type="hidden" id="id" name="id" value="{{$d->id}}">
                                                               </div>
                                                           </div>                                
@@ -207,7 +197,10 @@
                                                         <button type="submit" class="btn btn-warning">Unggah Foto Baru</button>
                                                         <a data-dismiss="modal" class="btn btn-default">Batal</a>
                                                       </div>
-                                                      
+                                                      </form>
+                                                    </div>
+                                                  </div>
+                                                </div>           
                                           </td>
                                           
 
@@ -235,9 +228,6 @@
                                                         </form>
                                                 </div>
                                             </td>
-
-
-
                                         </tr>
                                     @endforeach
 

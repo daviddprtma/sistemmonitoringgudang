@@ -116,13 +116,12 @@ class CategoryController extends Controller
     }
 
     public function changeFoto(Request $request){
-        $id = $request->get('id');
-        $file = $request -> file('foto_barang');
-        $imgFolder = 'images';
-        $imgFile = time()."_".$file->getClientOriginalName();
+        $id=$request->get("id");
+        $category=Category::find($id);
+        $file=$request->file('foto_barang');
+        $imgFolder='images';
+        $imgFile=time()."_".$file->getClientOriginalName();
         $file->move($imgFolder,$imgFile);
-        
-        $category = Category::find($id);
         $category->foto_barang = $imgFile;
         $category->save();
         return redirect()->route('categories.index')->with('sunting','Foto Barang berhasil diupdate');

@@ -128,9 +128,9 @@
                     <h6 class="card-subtitle mb-2 text-muted">Lokasi: {{$d->lokasi}}</h6>
                     <p class="card-text">Alamat: {{$d->alamat}}</p>
                     <p class="card-text">Jam Operasional: 
-                       <li>
+                       
                         {{$d->jam_operasi}}
-                       </li>
+                       
                     </p>
                     <p class="card-text">Telepon:  {{$d->telepon}}</p>
 
