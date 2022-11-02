@@ -23,6 +23,8 @@ Route::resource('categories','CategoryController');
 
 Route::resource('profiles','ProfileController');
 
+Route::resource('dashboards','DashboardController');
+
 Route::post('/category/changeFoto','CategoryController@changeFoto')
 ->name('categories.changeFoto');
 

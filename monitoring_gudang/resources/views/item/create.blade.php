@@ -121,8 +121,7 @@
                         <div class="col-md-12 px-1">
                             <div class="form-group">
                                 <label>Jumlah Stok</label>
-                                <input type="text" class="form-control" name="stok_barang" placeholder="Jumlah Stok"
-                                    value="">
+                                <input type="number" class="form-control" name="stok_barang" placeholder="Jumlah Stok" min="0">
                             </div>
                         </div>
                     </div>

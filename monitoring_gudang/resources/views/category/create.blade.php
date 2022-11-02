@@ -106,15 +106,12 @@
         <div class="card card-body mx-3 mx-md-4 mt-n6 ">
             <form method="POST" action="{{ url('categories') }}" enctype="multipart/form-data">
                 @csrf
-                <div class="row gx-4 mb-2">
-                    <div class="col-12 my-auto">
-                        <div class="h-100">
-                            <h5 class="mb-1">
+                <div class="row">
+                    <div class="col-12 px-1">
+                        <div class="form-group">
                                 <label>Nama Kategori</label>
                                 <input type="text" class="form-control" name="nama_kategori" placeholder="Nama Kategori"
                                     value="">
-                            </h5>
-
                         </div>
                     </div>
 

@@ -143,6 +143,10 @@
 
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Kategori Barang</th>
+
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
                                     </tr>
                                 </thead>
@@ -197,6 +201,29 @@
                                             <td class="align-middle text-sm">
                                                 <span>{{ $d->stok_barang }}
                                                 </span>
+                                            </td>
+
+                                            <td class="align-middle text-sm">
+                                                <a class='btn btn-info' href="{{url('items/'.$d->id)}}"
+                                                   data-target="#show{{$d->id}}" data-toggle='modal'>detail</a>        
+                                                <div class="modal fade" id="show{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                   <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title">Nama Barang: {{$d->nama_barang}}</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <img src="{{asset('images/'.$d->gambar_stok)}}" height="90px">
+                                                    </div>
+                                                    <div class="modal-body">
+                                                       Stok Barang: {{ $d->stok_barang }}
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Kategori Barang: {{ $d->category->nama_kategori }}
+                                                     </div>
+                                                   </div>
+                                                  </div>
+                                                </div>
                                             </td>
 
                                             <td class="align-middle ">

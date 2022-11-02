@@ -17,8 +17,7 @@ class ItemController extends Controller
     {
         //
         $data = Item::all();
-        $cat = Category::all();
-        return view('item.index',['data'=>$data,'cat'=>$cat]);
+        return view('item.index',['data'=>$data]);
     }
 
     /**
@@ -30,7 +29,8 @@ class ItemController extends Controller
     {
         //
         $cat = Category::all();
-        return view('item.create',['cat'=>$cat]);
+        $data = Item::all();
+        return view('item.create',['cat'=>$cat,'data'=>$data]);
     }
 
     /**
@@ -52,7 +52,7 @@ class ItemController extends Controller
         $data->stok_barang = $request->get('stok_barang');
         $data->category_id = $request->get('category_id');
         $data->save();
-        return redirect()->route('item.index')->with('success',"Stok barang:.$data->nama_barang. berhasil ditambahkan");
+        return redirect()->route('items.index')->with('status',"Stok barang:.$data->nama_barang. berhasil ditambahkan");
     }
 
     /**
