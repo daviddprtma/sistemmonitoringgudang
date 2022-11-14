@@ -75,6 +75,9 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         //
+        $data = $item;
+        $cat = Category::all();
+        return view('item.edit',compact('data','cat'));
     }
 
     /**
@@ -87,6 +90,11 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         //
+        $item->nama_barang = $request->get('nama_barang');
+        $item->stok_barang = $request->get('stok_barang');
+        $item->category_id = $request->get('category_id');
+        $item->save();
+        return redirect()->route('items.index')->with('sunting',"Barang berhasil diupdate");
     }
 
     /**
@@ -98,5 +106,25 @@ class ItemController extends Controller
     public function destroy(Item $item)
     {
         //
+        try{
+            $item->delete();
+            return redirect()->route('items.index')->with('delete','Data barang berhasil dihapus');
+        }
+        catch(\PDOException $e){
+            $msg = "Data barang tidak dapat dihapus. Pastikan data barang ini tidak terikat dengan data yang lain";
+            return redirect()->route('items.index')->with('error',$msg);
+        }
     }
+
+    public function changeFotoBarang(Request $request){
+        $id=$request->get("id");
+        $item=Item::find($id);
+        $file=$request->file('gambar_stok');
+        $imgFolder='images';
+        $imgFile=time()."_".$file->getClientOriginalName();
+        $file->move($imgFolder,$imgFile);
+        $item->gambar_stok = $imgFile;
+        $item->save();
+        return redirect()->route('items.index')->with('sunting','Foto Barang berhasil diupdate');
+    }    
 }

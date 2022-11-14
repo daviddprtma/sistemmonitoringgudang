@@ -107,38 +107,43 @@
             <form method="POST" action="{{ url('items/'.$data->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method("PUT")
-                <div class="row gx-4 mb-2">
-                    <div class="col-auto">
-
-                    </div>
-                    <div class="col-12 my-auto">
-                        <div class="h-100">
-                            <h5 class="mb-1">
+                <div class="row">
+                    <div class="col-md12 px-1">
+                        <div class="form-group">
                                 <label>Nama Barang</label>
-                                <input type="text" class="form-control" name="nama_kategori" placeholder="Nama Kategori"
-                                    value="{{$data->nama_kategori}}">
-                            </h5>
-
+                                <input type="text" class="form-control" name="nama_barang" placeholder="Nama Barang"
+                                    value="{{$data->nama_barang}}">
                         </div>
                     </div>
+                </div>
 
                     <div class="row">
 
                         <div class="col-md-12 px-1">
                             <div class="form-group">
-                                <label>Deskripsi</label>
-                                <input type="text" class="form-control" name="deskripsi_barang" placeholder="Deskripsi Kategori"
-                                    value="{{$data->deskripsi_barang}}">
+                                <label>Jumlah Stok</label>
+                                <input type="number" class="form-control" name="stok_barang" placeholder="Jumlah Stok" min="0" value="{{$data->stok_barang}}">
                             </div>
                         </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                        <label for="exampleInputEmail1">Kategori Barang</label>
+                        <select name="category_id" class="form-control">
+                            @foreach ($cat as $c)
+                                <option value="{{$c->id}}">{{$c->nama_kategori}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    </div>
 
+                    <br>
 
                     <div class="row">
                         <div class="update ml-auto mr-auto">
                             <button type="submit" class="btn btn-primary btn-round">Update Kategori</button>
-                                <a href="{{url('categories')}}" class="btn btn-warning" type="button">
+                                <a href="{{url('items')}}" class="btn btn-warning" type="button">
                                     Kembali</a>
                         </div>
                     </div>

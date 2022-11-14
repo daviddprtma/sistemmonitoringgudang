@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/admin', function () {
+Route::get('/dashboards', function () {
     return view('welcome');
 });
 
@@ -25,8 +25,10 @@ Route::resource('profiles','ProfileController');
 
 Route::resource('dashboards','DashboardController');
 
+Route::resource('multiunits','MultiUnitController');
+
 Route::post('/category/changeFoto','CategoryController@changeFoto')
 ->name('categories.changeFoto');
 
-Route::post('/item/changeFoto','ItemController@changeFoto')
-->name('items.changeFoto');
+Route::post('/item/changeFotoBarang','ItemController@changeFotoBarang')
+->name('items.changeFotoBarang');

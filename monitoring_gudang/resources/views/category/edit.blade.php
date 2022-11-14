@@ -97,11 +97,36 @@
 @endsection
 
 @section('content')
+
     <div class="container-fluid px-2 px-md-4">
         <div class="page-header min-height-100 border-radius-xl mt-4"
             style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
             <span class="mask  bg-gradient-primary  opacity-6"></span>
         </div>
+    @if (session()->has('error'))
+    <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
+            role="alert">
+        {{ session('error') }}
+    </div>
+    @endif
+
+    @if (session('status'))
+    <div class="alert alert-success d-flex justify-content-center text-light">
+        {{ session('status') }}
+    </div>
+    @endif
+
+    @if (session('sunting'))
+    <div class="alert alert-warning d-flex justify-content-center text-light">
+      {{ session('sunting') }}
+     </div>
+     @endif
+    @if (session('delete'))
+    <div class="alert alert-danger d-flex justify-content-center text-light">
+    {{ session('delete') }}
+    </div>
+    @endif
+
 
         <div class="card card-body mx-3 mx-md-4 mt-n6 ">
             <form method="POST" action="{{ url('categories/'.$data->id) }}" enctype="multipart/form-data">

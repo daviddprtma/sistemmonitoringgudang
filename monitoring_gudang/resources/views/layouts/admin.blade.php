@@ -120,6 +120,14 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="{{url('multiunits')}}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">track_changes</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Multi Satuan</span>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link text-white " href="">
@@ -167,7 +175,7 @@
         @yield('content')
     </main>
 
-    
+    @yield('javascript')
     <!--   Core JS Files   -->
     <script src="{{ asset('material-dashboard-master/assets/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('material-dashboard-master/assets/js/core/bootstrap.min.js') }}"></script>

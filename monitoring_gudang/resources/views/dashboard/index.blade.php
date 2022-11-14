@@ -148,10 +148,17 @@
                                                 </span>
                                             </td>
                                             
+                                            @if ($d->stok_barang > 0)
                                             <td class="align-middle text-sm">
                                                 <span>{{ $d->stok_barang }}
                                                 </span>
                                             </td>
+                                            @else
+                                            <td class="align-middle text-sm">
+                                                <span>Stok Barang Habis. Silahkan melakukan pengisian stok barang terlebih dahulu!
+                                                </span>
+                                            </td>
+                                            @endif
 
                                             
                                     @endforeach

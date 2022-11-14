@@ -108,10 +108,22 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
+                            @if (session('sunting'))
+                            <div class="alert alert-warning d-flex justify-content-center text-light">
+                                    {{ session('sunting') }}
+                            </div>
+                            @endif
                             @if (session('delete'))
                                 <div class="alert alert-danger d-flex justify-content-center text-light">
                                     {{ session('delete') }}
                                 </div>
+                            @endif
+
+                            @if (session()->has('error'))
+                            <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
+                                role="alert">
+                                {{ session('error') }}
+                            </div>
                             @endif
                             <div class="col-lg-6 col-7">
 
@@ -164,7 +176,7 @@
                                                     
                                                   <div class="modal-dialog">
                                                     <div class="modal-content" >
-                                                      <form method="POST" enctype="multipart/form-data" action="{{route('items.changeFoto')}}" role="form"  >
+                                                      <form method="POST" enctype="multipart/form-data" action="{{route('items.changeFotoBarang')}}" role="form"  >
                                                       <div class="modal-header">
                                                         <button type="button" class="close" 
                                                           data-dismiss="modal" aria-hidden="true"></button>
