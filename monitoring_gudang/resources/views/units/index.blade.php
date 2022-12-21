@@ -7,7 +7,7 @@
         <div class="  w-auto " id="sidenav-collapse-main">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="/dashboard">
+                    <a class="nav-link text-white" href="/admin">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">dashboard</i>
                         </div>
@@ -16,7 +16,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="">
+                    <a class="nav-link text-white" href="{{url('profiles')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">person</i>
                         </div>
@@ -95,10 +95,11 @@
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                 <div class="card">
                     <div class="card-header pb-0">
-                        @if (session()->has('error'))
+                        @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
                                 role="alert">
-                                {{ session('error') }}
+                                {{ session('success') }}
+
                             </div>
                         @endif
                         <div class="row">
@@ -107,10 +108,9 @@
                                     {{ session('status') }}
                                 </div>
                             @endif
-
                             @if (session('sunting'))
                             <div class="alert alert-warning d-flex justify-content-center text-light">
-                                {{ session('sunting') }}
+                                    {{ session('sunting') }}
                             </div>
                             @endif
                             @if (session('delete'))
@@ -118,25 +118,17 @@
                                     {{ session('delete') }}
                                 </div>
                             @endif
-
-                            <h6>Category</h6>
-                            <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
-                                <a href="{{url('categories/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
-                                    Tambah Kategori
-                                </a>
-                            </div>
-
-                            <div class="col-lg-6 col-7">
-                            
-                                {{-- <p class="text-sm mb-0">
-                                    <i class="fa fa-check text-info" aria-hidden="true"></i> Terdapat<span
-                                        class="font-weight-bold ms-1">{{ count($cate) }} macam barang</span> pada saat
-                                    ini
-                                </p> --}}
-                            </div>
                         </div>
                     </div>
+                    <div class="col-lg-6 col-7">
 
+                        <h6>Multi Satuan</h6>
+                        <div class="col-lg-2 col-sm-5 col-12 mt-sm-0 mt-2">
+                            <a href="{{url('units/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
+                                Tambah Multi Satuan
+                            </a>
+                        </div>
+                    </div>
                     <div class="card-body px-0 pb-2">
                         <div class="table-responsive">
                             <table class="table align-items-center mb-0">
@@ -144,86 +136,28 @@
                                     <tr>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Gambar</th>
-
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Nama Kategori</th>
-                                            
-                                        <th
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Deskripsi Kategori</th>
-
-                                        <th
-                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Aksi</th>
-                                    </tr>
+                                            Nama Satuan</th>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $d)
                                         {{-- {{ dd($m) }} --}}
                                         <tr>
-                                            
-                                            <td>
-                                                
-                                                <img src="{{asset('images/'.$d->foto_barang)}}" height="90px">
-                                                
-                                                <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-xs btn-default">
-                                                    Ubah Gambar</a>
-                                                <div class="modal fade" id="modalChange_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
-                                                    
-                                                  <div class="modal-dialog">
-                                                    <div class="modal-content" >
-                                                      <form method="POST" enctype="multipart/form-data" action="{{route('categories.changeFoto')}}" role="form"  >
-                                                      <div class="modal-header">
-                                                        <button type="button" class="close" 
-                                                          data-dismiss="modal" aria-hidden="true"></button>
-                                                        <h4 class="modal-title">Ubah Gambar untuk {{$d->nama_kategori}}</h4>
-                                                      </div>
-
-                                                      <div class="modal-body">
-                                                          @csrf
-                                                          <div class="form-body">
-                                                              <div class="form-group">
-                                                                  <label for="exampleInputEmail1">Foto Barang</label>
-                                                                  <input type="file" class="form-control" id="foto_barang" name="foto_barang">
-                                                                  <input type="hidden" id="id" name="id" value="{{$d->id}}">
-                                                              </div>
-                                                          </div>                                
-                                                          
-                                                      </div>
-
-                                                      <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-warning">Unggah Foto Baru</button>
-                                                        <a data-dismiss="modal" class="btn btn-default">Batal</a>
-                                                      </div>
-                                                      </form>
-                                                    </div>
-                                                  </div>
-                                                </div>           
-                                          </td>
                                           
-
                                             <td class="align-middle text-sm">
-                                                <span class="text-xs font-weight-bold">{{ $d->nama_kategori }}
+                                                <span class="text-xs font-weight-bold">{{ $d->satuan }}
                                                 </span>
                                             </td>
-                                            <td class="align-middle text-sm">
-                                                <span class="text-xs font-weight-bold">{{ $d->deskripsi_barang }}</span>
-                                            </td>
-                                          
-
                                             <td class="align-middle ">
                                                 <div class="ms-auto text-end">
-                                                    <a href="{{url('categories/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
+                                                    <a href="{{url('units/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
                                                         
                                                         <i class="material-icons text-sm me-2">edit</i>Edit</a>
 
-                                                        <form method="POST" action="{{url('categories/'.$d->id)}}">
+                                                        <form method="POST" action="{{url('units/'.$d->id)}}">
                                                             @csrf
                                                             @method("DELETE")
                                                             <input type="submit" value="delete" class="btn btn-link text-danger text-gradient px-3 mb-0" 
-                                                            onclick="if(!confirm('apakah anda yakin untuk menghapus data kategori ini?')) return false;">
+                                                            onclick="if(!confirm('apakah anda yakin untuk menghapus data satuan ini?')) return false;">
                                                                 
                                                         </form>
                                                 </div>

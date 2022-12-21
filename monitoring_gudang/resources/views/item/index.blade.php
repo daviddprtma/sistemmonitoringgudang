@@ -156,7 +156,7 @@
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Kategori Barang</th>
-
+                                            
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
@@ -215,6 +215,7 @@
                                                 </span>
                                             </td>
 
+
                                             <td class="align-middle text-sm">
                                                 <a class='btn btn-info' href="{{url('items/'.$d->id)}}"
                                                    data-target="#show{{$d->id}}" data-toggle='modal'>detail</a>        
@@ -232,7 +233,11 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         Kategori Barang: {{ $d->category->nama_kategori }}
-                                                     </div>
+                                                    </div>
+                                                        
+                                                    <div class="modal-body">
+                                                        Satuan: {{ $d->unit['satuan']}}
+                                                    </div>
                                                    </div>
                                                   </div>
                                                 </div>
@@ -247,9 +252,9 @@
                                                         <form method="POST" action="{{url('items/'.$d->id)}}">
                                                             @csrf
                                                             @method("DELETE")
-                                                            <a class="btn btn-link text-danger text-gradient px-3 mb-0" 
+                                                            <input type="submit" value="delete" class="btn btn-link text-danger text-gradient px-3 mb-0" 
                                                             onclick="if(!confirm('apakah anda yakin untuk menghapus data stok barang ini?')) return false;">
-                                                                <i class="material-icons text-sm me-2">delete</i>Hapus</a>
+                                                                
                                                         </form>
                                                 </div>
                                             </td>

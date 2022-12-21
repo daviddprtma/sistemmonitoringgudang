@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Item;
+use App\Unit;
 use Illuminate\Http\Request;
 
 class ItemController extends Controller
@@ -30,7 +31,8 @@ class ItemController extends Controller
         //
         $cat = Category::all();
         $data = Item::all();
-        return view('item.create',['cat'=>$cat,'data'=>$data]);
+        $unit = Unit::all();
+        return view('item.create',['cat'=>$cat,'data'=>$data,'unit'=>$unit]);
     }
 
     /**
@@ -51,6 +53,7 @@ class ItemController extends Controller
         $data->nama_barang = $request->get('nama_barang');
         $data->stok_barang = $request->get('stok_barang');
         $data->category_id = $request->get('category_id');
+        $data->units_id = $request->get('units_id');
         $data->save();
         return redirect()->route('items.index')->with('status',"Stok barang:.$data->nama_barang. berhasil ditambahkan");
     }
@@ -77,7 +80,8 @@ class ItemController extends Controller
         //
         $data = $item;
         $cat = Category::all();
-        return view('item.edit',compact('data','cat'));
+        $unit = Unit::all();
+        return view('item.edit',compact('data','cat','unit'));
     }
 
     /**
@@ -93,6 +97,7 @@ class ItemController extends Controller
         $item->nama_barang = $request->get('nama_barang');
         $item->stok_barang = $request->get('stok_barang');
         $item->category_id = $request->get('category_id');
+        $item->units_id = $request->get('units_id');
         $item->save();
         return redirect()->route('items.index')->with('sunting',"Barang berhasil diupdate");
     }

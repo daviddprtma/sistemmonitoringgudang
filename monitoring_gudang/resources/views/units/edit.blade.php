@@ -104,69 +104,28 @@
         </div>
 
         <div class="card card-body mx-3 mx-md-4 mt-n6 ">
-            <form method="POST" action="{{ url('items') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('units/'.$data->id) }}" enctype="multipart/form-data">
                 @csrf
+                @method("PUT")
                 <div class="row">
                     <div class="col-md12 px-1">
                         <div class="form-group">
-                                <label>Nama Barang</label>
-                                <input type="text" class="form-control" name="nama_barang" placeholder="Nama Barang"
-                                    value="">
+                                <label>Nama Satuan</label>
+                                <input type="text" class="form-control" name="satuan" placeholder="Nama Satuan"
+                                    value="{{$data->satuan}}">
                         </div>
                     </div>
                 </div>
 
                     <div class="row">
-
-                        <div class="col-md-12 px-1">
-                            <div class="form-group">
-                                <label>Jumlah Stok</label>
-                                <input type="number" class="form-control" name="stok_barang" placeholder="Jumlah Stok" min="0">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12 px-1">
-                            <div class="form-group">
-                                <label>Gambar Stok</label>
-                                <input type="file" class="form-control" id="gambar_stok" name="gambar_stok">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-12 px-1">
-                        <label for="exampleInputEmail1">Kategori Barang</label>
-                        <select name="category_id" class="form-control">
-                            @foreach ($cat as $c)
-                                <option value="{{$c->id}}">{{$c->nama_kategori}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 px-1">
-                        <label for="exampleInputEmail1">Satuan</label>
-                        <select name="units_id" class="form-control">
-                            @foreach ($unit as $u)
-                                <option value="{{$u->id}}">{{$u->satuan}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    </div>
-                    <br>
-
-                    <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Tambah Stok</button>
-                                <a href="{{url('items')}}" class="btn btn-warning" type="button">
+                            <button type="submit" class="btn btn-primary btn-round">Update Satuan</button>
+                                <a href="{{url('units')}}" class="btn btn-warning" type="button">
                                     Kembali</a>
                         </div>
                     </div>
                 </div>
             </form>
-
         </div>
     </div>
 @endsection

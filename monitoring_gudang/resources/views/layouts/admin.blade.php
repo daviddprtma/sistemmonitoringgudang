@@ -54,19 +54,20 @@
                     
                     <h6 class="font-weight-bolder mb-0">PT Berkat Keselamatan Dunia</h6>
                 </nav>
-                <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-                    <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                        <div class="input-group input-group-outline">
-                            <label class="form-label">Type here...</label>
-                            <input type="text" class="form-control">
-                        </div>
-                    </div>
+
+                    @if (Route::has('login'))
+                    <a class="navbar-brand" href="{{ url('dashboards') }}">
+                    
+                    </a>
+                    @endif
                     @if (!Auth::check())
                         <div class="mx-3">
                             <p>Already have account? <a href="/login" class="" tabindex="-1"
                                     aria-disabled="true">Login</a> </p>
                         </div>
                     @endif
+
+                    <span class="username username-hide-on-mobile">{{Auth::user()->name}}</span>
                 </div>
             </div>
         </nav>
@@ -121,7 +122,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{url('multiunits')}}">
+                    <a class="nav-link text-white " href="{{url('units')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">track_changes</i>
                         </div>
@@ -152,8 +153,6 @@
             <div class="mx-3">
                 <form id="logout-form" action="/logout" method="post">
                     @csrf
-
-
                     <a class="btn bg-gradient-primary mt-4 " href="" style=""> <svg
                             xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                             class="bi bi-box-arrow-left" viewBox="0 0 16 16">

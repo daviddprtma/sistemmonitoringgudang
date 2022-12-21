@@ -138,6 +138,17 @@
                     </div>
                     </div>
 
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                        <label for="exampleInputEmail1">Satuan</label>
+                        <select name="units_id" class="form-control">
+                            @foreach ($unit as $u)
+                                <option value="{{$u->id}}">{{$u->satuan}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    </div>
+
                     <br>
 
                     <div class="row">
