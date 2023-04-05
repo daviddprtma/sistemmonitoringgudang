@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Item;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
 {
@@ -15,8 +16,8 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        $data = Item::all();
-        return view('dashboard.index',compact('data'));
+        $data = DB::table('items')->orderByDesc('harga')->limit(5)->get();
+        return view('dashboard.index',compact(['data']));
     }
 
     /**

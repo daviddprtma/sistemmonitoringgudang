@@ -44,7 +44,7 @@ class UnitController extends Controller
         $data = new Unit();
         $data->satuan = $request->get('satuan');
         $data->save();
-        return redirect()->route('units.index')->with('status',"Satuan :.$data->satuan. berhasil ditambahkan");
+        return redirect()->route('units.index')->with('status',"Satuan : $data->satuan berhasil ditambahkan");
     }
 
     /**
@@ -94,6 +94,7 @@ class UnitController extends Controller
      */
     public function destroy(Unit $unit)
     {
+        $this->authorize('delete-permission',$unit);
         //
         try{
             $unit->delete();

@@ -5,9 +5,9 @@
         class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark"
         id="sidenav-main">
         <div class="sidenav-header">
-            <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+            {{-- <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
                 aria-hidden="true" id="iconSidenav"></i>
-            {{-- <a class="navbar-brand m-0" href="/profile" target="_blank">
+            <a class="navbar-brand m-0" href="/profile" target="_blank">
                 <img src="{{ asset('uploads/' . Auth::user()->gambar) }}" class="navbar-brand-img h-100" alt="main_logo">
                 <span class="ms-1 font-weight-bold text-white">{{ Auth::user()->name }}</span>
             </a> --}}
@@ -23,8 +23,9 @@
                         <span class="nav-link-text ms-1">Dashboard</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{url('profiles')}}">
+                    <a class="nav-link text-white" href="">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">person</i>
                         </div>
@@ -32,9 +33,8 @@
                     </a>
                 </li>
 
-
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{url('categories')}}">
+                    <a class="nav-link text-white " href="{{url('category')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
                     </div>
@@ -43,7 +43,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{url('items')}}">
+                    <a class="nav-link text-white " href="{{url('item')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -51,23 +51,23 @@
                     </a>
                 </li>
 
-              <li class="nav-item">
+
+                <li class="nav-item">
                     <a class="nav-link text-white " href="">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">view_in_ar</i>
                         </div>
                         <span class="nav-link-text ms-1">Pencatatan Stok</span>
                     </a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav-link text-white " href="">
-                    <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons opacity-10">receipt_long</i>
-                    </div>
-                    <span class="nav-link-text ms-1">Transaksi</span>
-                </a>
-            </li>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">receipt_long</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Transaksi</span>
+                    </a>
+                </li>
 
             </ul>
         </div>
@@ -101,47 +101,58 @@
             <span class="mask  bg-gradient-primary  opacity-6"></span>
         </div>
 
-        <div class="card card-body mx-3 mx-md-4 mt-n6">
-            @if (session('delete'))
-                <div class="alert alert-danger d-flex justify-content-center text-light">
-                    {{ session('delete') }}
+        <div class="card card-body mx-3 mx-md-4 mt-n6 ">
+            <form method="POST" action="{{ url('initems/'.$data->id) }}" enctype="multipart/form-data">
+                @csrf
+                @method("PUT")
+                <div class="row">
+                    <div class="col-md-12 px-1">
+                        <label>Tanggal Masuk</label>
+                    <input type="date" class="form-control" name="tanggal_masuk" value="{{$data->tanggal_masuk}}">
+                    </div>
                 </div>
-            @endif
 
-            @if (session('status'))
-                <div class="alert alert-success d-flex justify-content-center text-light">
-                    {{ session('status') }}
-            </div>
-            @endif
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Nama Barang Masuk</label>
+                                <input type="text" class="form-control" name="nama_barang_masuk" placeholder="Nama Barang Masuk" value="{{$data->nama_barang_masuk}}">
+                            </div>
+                        </div>
+                    </div>
 
-            @if (session('sunting'))
-            <div class="alert alert-warning d-flex justify-content-center text-light">
-                {{ session('sunting') }}
-            </div>
-            @endif
-                            
-            <div class="card" style="width: 34rem;">
-                <div class="card-body">
-                    @foreach ($data as $d)
-                    <img src="{{ asset('images/'.$d->foto) }}" height="140px">
-                    <h5 class="card-title">Nama Perusahaan: {{$d->nama_perusahaan}}</h5>      
-                    <h6 class="card-subtitle mb-2 text-muted">Lokasi: {{$d->lokasi}}</h6>
-                    <p class="card-text">Alamat: {{$d->alamat}}</p>
-                    <p class="card-text">Jam Operasional: 
-                       
-                        {{$d->jam_operasi}}
-                       
-                    </p>
-                    <p class="card-text">Telepon:  {{$d->telepon}}</p>
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <label>Jumlah Barang Masuk</label>
+                            <input type="number" class="form-control" name="jumlah_barang_masuk" min="0" value="{{$data->jumlah_barang_masuk}}">
+                        </div>
+                    </div>
 
-                    <form method="POST" action="{{url('profiles/'.$d->id)}}">
-                        @csrf
-                        @method("PUT")
-                        <a href="{{url('profiles/'.$d->id.'/edit')}}" class="btn btn-warning">Edit Profil</a>
-                    </form>  
-                    @endforeach
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Satuan Barang</label>
+                                <select name="idunits" class="form-control">
+                                    @foreach ($unit as $u)
+                                        <option value="{{$u->id}}">{{$u->satuan}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Update Stok Masuk</button>
+                                <a href="{{url('initems')}}" class="btn btn-warning" type="button">
+                                    Kembali</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </form>
+
         </div>
     </div>
 @endsection

@@ -150,7 +150,7 @@
 
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Jumlah Stok Barang
+                                            Jumlah Stok
                                         </th>
 
                                         <th
@@ -167,8 +167,7 @@
                                         {{-- {{ dd($m) }} --}}
                                         <tr>
                                             <td>
-                                                
-                                                <img src="{{asset('images/'.$d->gambar_stok)}}" height="90px">
+                                                <img src="{{asset('images/'.$d->gambar_stok)}}" height="50px">
                                                 
                                                 <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-xs btn-default">
                                                     Ubah Gambar</a>
@@ -214,8 +213,7 @@
                                                 <span>{{ $d->stok_barang }}
                                                 </span>
                                             </td>
-
-
+        
                                             <td class="align-middle text-sm">
                                                 <a class='btn btn-info' href="{{url('items/'.$d->id)}}"
                                                    data-target="#show{{$d->id}}" data-toggle='modal'>detail</a>        
@@ -231,6 +229,9 @@
                                                     <div class="modal-body">
                                                        Stok Barang: {{ $d->stok_barang }}
                                                     </div>
+                                                    <div class="modal-body">
+                                                        Harga: @currency($d->harga)
+                                                     </div>
                                                     <div class="modal-body">
                                                         Kategori Barang: {{ $d->category->nama_kategori }}
                                                     </div>
@@ -249,6 +250,7 @@
                                                         
                                                         <i class="material-icons text-sm me-2">edit</i>Edit</a>
 
+                                                        @can('delete-permission', $d)
                                                         <form method="POST" action="{{url('items/'.$d->id)}}">
                                                             @csrf
                                                             @method("DELETE")
@@ -256,6 +258,7 @@
                                                             onclick="if(!confirm('apakah anda yakin untuk menghapus data stok barang ini?')) return false;">
                                                                 
                                                         </form>
+                                                        @endcan
                                                 </div>
                                             </td>
                                         </tr>

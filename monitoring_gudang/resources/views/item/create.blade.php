@@ -129,6 +129,15 @@
                     <div class="row">
                         <div class="col-md-12 px-1">
                             <div class="form-group">
+                                <label>Harga</label>
+                                <input type="number" class="form-control" name="harga" placeholder="Harga Barang" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
                                 <label>Gambar Stok</label>
                                 <input type="file" class="form-control" id="gambar_stok" name="gambar_stok">
                             </div>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,35 +16,34 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 |
 */
 
-Route::get('/dashboards', function () {
-    return view('welcome');
-});
-
 Route::middleware(['auth'])->group(function(){
+    Route::get('/dashboards', function () {
+        return view('welcome');
+    });
+
     Route::resource('items','ItemController');
 
-    Route::resource('categories','CategoryController');
+    Route::resource('initems','InItemController');
     
-    Route::resource('profiles','ProfileController');
+    Route::resource('outitems','OutItemController');
+
+    Route::resource('categories','CategoryController');
     
     Route::resource('dashboards','DashboardController');
     
     Route::resource('units','UnitController');
+
+    Route::resource('stokopnames','StokOpnameController');
     
     Route::post('/category/changeFoto','CategoryController@changeFoto')
     ->name('categories.changeFoto');
     
     Route::post('/item/changeFotoBarang','ItemController@changeFotoBarang')
     ->name('items.changeFotoBarang');
-    
-    Route::post('/item/getItem','CariBarangController@getItem')
-    ->name('items.cariBarang');
 });
 
 Auth::routes(['verify' => true]);
-
 Route::get('/', 'DashboardController@index');
-
 Route::get('forget-password', [ForgotPasswordController::class, 'showForgetPasswordForm'])->name('forget.password.get');
 Route::post('forget-password', [ForgotPasswordController::class, 'submitForgetPasswordForm'])->name('forget.password.post'); 
 Route::get('reset-password/{token}', [ForgotPasswordController::class, 'showResetPasswordForm'])->name('reset.password.get');

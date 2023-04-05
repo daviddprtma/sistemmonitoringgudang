@@ -102,30 +102,34 @@
         </div>
 
         <div class="card card-body mx-3 mx-md-4 mt-n6 ">
-            <form method="POST" action="{{ url('units') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('stokopnames') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md12 px-1">
-                        <div class="form-group">
-                                <label>Nama Satuan</label>
-                                <input type="text" class="form-control" name="satuan" placeholder="Nama Satuan"
-                                    value="">
-                        </div>
+                    <div class="col-md-12 px-1">
+                    <label>Nama Barang</label>
+                    <input type="text" class="form-control" name="nama_barang" placeholder="Nama Barang Opname">
                     </div>
                 </div>
 
-                <br>
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Jumlah Barang Opname</label>
+                                <input type="text" class="form-control" name="jumlah_barang" placeholder="Jumlah Barang Opname">
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="row">
+                    <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Tambah Satuan Barang</button>
-                                <a href="{{url('units')}}" class="btn btn-warning" type="button">
+                            <button type="submit" class="btn btn-primary btn-round">Tambah Stok Opname</button>
+                                <a href="{{url('stokopnames')}}" class="btn btn-warning" type="button">
                                     Kembali</a>
                         </div>
                     </div>
-                </div>
             </form>
-
+            </div>
         </div>
     </div>
+</div>
 @endsection

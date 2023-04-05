@@ -219,6 +219,8 @@
                                                         
                                                         <i class="material-icons text-sm me-2">edit</i>Edit</a>
 
+                                                        @can('delete-permission', $d)
+                                                            
                                                         <form method="POST" action="{{url('categories/'.$d->id)}}">
                                                             @csrf
                                                             @method("DELETE")
@@ -226,6 +228,8 @@
                                                             onclick="if(!confirm('apakah anda yakin untuk menghapus data kategori ini?')) return false;">
                                                                 
                                                         </form>
+                                                        
+                                                        @endcan
                                                 </div>
                                             </td>
                                         </tr>

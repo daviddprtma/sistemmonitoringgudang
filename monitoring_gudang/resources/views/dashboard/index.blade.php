@@ -126,7 +126,9 @@
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Nama Barang</th>
-
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                           Harga Barang</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Jumlah Stok Barang
@@ -145,6 +147,11 @@
                                           
                                             <td class="align-middle text-sm">
                                                 <span class="text-xs font-weight-bold">{{ $d->nama_barang }}
+                                                </span>
+                                            </td>
+
+                                            <td class="align-middle text-sm">
+                                                <span class="text-xs font-weight-bold">@currency($d->harga)
                                                 </span>
                                             </td>
                                             

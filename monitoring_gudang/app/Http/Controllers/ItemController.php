@@ -52,10 +52,11 @@ class ItemController extends Controller
         $data->gambar_stok = $imgFile;
         $data->nama_barang = $request->get('nama_barang');
         $data->stok_barang = $request->get('stok_barang');
+        $data->harga = $request->get('harga');
         $data->category_id = $request->get('category_id');
         $data->units_id = $request->get('units_id');
         $data->save();
-        return redirect()->route('items.index')->with('status',"Stok barang:.$data->nama_barang. berhasil ditambahkan");
+        return redirect()->route('items.index')->with('status',"Stok barang:$data->nama_barang berhasil ditambahkan");
     }
 
     /**
@@ -96,6 +97,7 @@ class ItemController extends Controller
         //
         $item->nama_barang = $request->get('nama_barang');
         $item->stok_barang = $request->get('stok_barang');
+        $item->harga = $request->get('harga');
         $item->category_id = $request->get('category_id');
         $item->units_id = $request->get('units_id');
         $item->save();
@@ -110,6 +112,7 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
+        $this->authorize('delete-permission',$item);
         //
         try{
             $item->delete();

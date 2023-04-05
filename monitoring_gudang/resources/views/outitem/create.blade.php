@@ -75,6 +75,8 @@
             <div class="mx-3">
                 <form id="logout-form" action="/logout" method="post">
                     @csrf
+
+
                     <a class="btn bg-gradient-primary mt-4 " href="" style=""> <svg
                             xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                             class="bi bi-box-arrow-left" viewBox="0 0 16 16">
@@ -102,30 +104,58 @@
         </div>
 
         <div class="card card-body mx-3 mx-md-4 mt-n6 ">
-            <form method="POST" action="{{ url('units') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('outitems') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md12 px-1">
-                        <div class="form-group">
-                                <label>Nama Satuan</label>
-                                <input type="text" class="form-control" name="satuan" placeholder="Nama Satuan"
-                                    value="">
+                    <div class="col-md-12 px-1">
+                    <label for="exampleInputEmail1">Nama Barang</label>
+                    <select name="iditems" class="form-control">
+                        @foreach ($item as $i)
+                            <option value="{{$i->id}}">{{$i->nama_barang}}</option>
+                        @endforeach
+                    </select>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Nama Perusahaan</label>
+                                <input type="text" class="form-control" name="nama_perusahaan" placeholder="Nama Perusahaan">
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <br>
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                        <label for="exampleInputEmail1">Satuan</label>
+                        <select name="idunits" class="form-control">
+                            @foreach ($unit as $u)
+                                <option value="{{$u->id}}">{{$u->satuan}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                    </div>
 
-                <div class="row">
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Jumlah Barang Dibeli</label>                                
+                                <input type="text" class="form-control" name="jumlah_barang_dibeli" placeholder="Masukkan Jumlah barang">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Tambah Satuan Barang</button>
-                                <a href="{{url('units')}}" class="btn btn-warning" type="button">
+                            <button type="submit" class="btn btn-primary btn-round">Kirim</button>
+                                <a href="{{url('outitems')}}" class="btn btn-warning" type="button">
                                     Kembali</a>
                         </div>
                     </div>
-                </div>
             </form>
-
+            </div>
         </div>
     </div>
+</div>
 @endsection

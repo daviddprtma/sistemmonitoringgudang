@@ -47,8 +47,7 @@ class CategoryController extends Controller
         $imgFile = time()."_".$file->getClientOriginalName();
         $file->move($imgFolder,$imgFile);
         $data->foto_barang = $imgFile;
-
-
+        
         $data->nama_kategori = $request->get('nama_kategori');
         $data->deskripsi_barang = $request->get('deskripsi_barang');
         $data->save();
@@ -104,6 +103,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        $this->authorize('delete-permission',$category);
         //
         try{
             $category->delete();

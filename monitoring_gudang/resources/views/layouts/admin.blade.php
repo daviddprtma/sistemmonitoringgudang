@@ -67,7 +67,7 @@
                         </div>
                     @endif
 
-                    <span class="username username-hide-on-mobile">{{Auth::user()->name}}</span>
+                    <span class="username username-hide-on-mobile">{{Auth::user()->name}}</span>                    
                 </div>
             </div>
         </nav>
@@ -95,15 +95,6 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{url('profiles')}}">
-                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">person</i>
-                        </div>
-                        <span class="nav-link-text ms-1">Profil</span>
-                    </a>
-                </li>
-
-                <li class="nav-item">
                     <a class="nav-link text-white " href="/categories">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
@@ -122,6 +113,24 @@
                 </li>
 
                 <li class="nav-item">
+                    <a class="nav-link text-white " href="{{url('initems')}}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">shopping_cart</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Pencatatan Stok Masuk</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white " href="{{url('outitems')}}">
+                        <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="material-icons opacity-10">local_shipping</i>
+                        </div>
+                        <span class="nav-link-text ms-1">Pencatatan Stok Keluar</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
                     <a class="nav-link text-white " href="{{url('units')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">track_changes</i>
@@ -131,13 +140,14 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="">
+                    <a class="nav-link text-white " href="{{url('stokopnames')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-                            <i class="material-icons opacity-10">view_in_ar</i>
+                            <i class="material-icons opacity-10">show_chart</i>
                         </div>
-                        <span class="nav-link-text ms-1">Pencatatan Stok</span>
+                        <span class="nav-link-text ms-1">Stok Opname</span>
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link text-white " href="">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -435,6 +445,13 @@
                 damping: '0.5'
             }
             Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+        }
+    </script>
+
+    <script>
+        const BASE_URL = "{{url('/')}}";
+        const changeLang = (e) => {
+            window.location.href = BASE_URL + "/" + e.value;
         }
     </script>
     <!-- Github buttons -->

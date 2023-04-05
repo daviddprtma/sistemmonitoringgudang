@@ -102,30 +102,63 @@
         </div>
 
         <div class="card card-body mx-3 mx-md-4 mt-n6 ">
-            <form method="POST" action="{{ url('units') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('initems') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="col-md12 px-1">
-                        <div class="form-group">
-                                <label>Nama Satuan</label>
-                                <input type="text" class="form-control" name="satuan" placeholder="Nama Satuan"
-                                    value="">
-                        </div>
+                    <div class="col-md-12 px-1">
+                    <label>Tanggal Masuk</label>
+                    <input type="date" class="form-control" name="tanggal_masuk">
                     </div>
                 </div>
 
-                <br>
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Nama Barang Masuk</label>
+                                <input type="text" class="form-control" name="nama_barang_masuk" placeholder="Nama Barang Masuk">
+                            </div>
+                        </div>
+                    </div>
 
-                <div class="row">
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Jumlah Barang Masuk</label>
+                                <input type="number" class="form-control" name="jumlah_barang_masuk" min="0">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                        <label for="exampleInputEmail1">Satuan Barang</label>
+                        <select name="idunits" class="form-control">
+                            @foreach ($unit as $u)
+                                <option value="{{$u->id}}">{{$u->satuan}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Harga Barang Masuk</label>                                
+                                <input type="text" class="form-control" name="harga_barang_masuk" placeholder="Harga Barang Masuk">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Tambah Satuan Barang</button>
-                                <a href="{{url('units')}}" class="btn btn-warning" type="button">
+                            <button type="submit" class="btn btn-primary btn-round">Kirim</button>
+                                <a href="{{url('initems')}}" class="btn btn-warning" type="button">
                                     Kembali</a>
                         </div>
                     </div>
-                </div>
             </form>
-
+            </div>
         </div>
     </div>
+</div>
 @endsection

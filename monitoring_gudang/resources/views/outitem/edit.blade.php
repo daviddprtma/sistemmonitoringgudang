@@ -25,7 +25,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="{{url('profiles')}}">
+                    <a class="nav-link text-white" href="">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">person</i>
                         </div>
@@ -34,7 +34,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{url('categories')}}">
+                    <a class="nav-link text-white " href="{{url('category')}}">
                     <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                     <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
                     </div>
@@ -43,7 +43,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="{{url('items')}}">
+                    <a class="nav-link text-white " href="{{url('item')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
@@ -104,75 +104,61 @@
         </div>
 
         <div class="card card-body mx-3 mx-md-4 mt-n6 ">
-            <form method="POST" action="{{ url('profiles/'.$data->id) }}" role="form" enctype="multipart/form-data">
+            <form method="POST" action="{{ url('outitems/'.$data->id) }}" enctype="multipart/form-data">
                 @csrf
                 @method("PUT")
-                <div class="row gx-4 mb-2">
-                    <div class="row">
+                <div class="row">
                     <div class="col-md-12 px-1">
-                        <div class="form-group">
+                        <label for="exampleInputEmail1">Nama Barang</label>
+                        <select name="iditems" class="form-control">
+                            @foreach ($item as $i)
+                                <option value="{{$i->id}}">{{$i->nama_barang}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                </div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
                                 <label>Nama Perusahaan</label>
-                                <input type="text" class="form-control" name="nama_perusahaan" placeholder="Nama Perusahaan"
-                                    value="{{$data->nama_perusahaan}}">
+                                <input type="text" class="form-control" name="nama_perusahaan" placeholder="Nama Perusahaan" value="{{$data->nama_perusahaan}}">
+                            </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                        <label for="exampleInputEmail1">Satuan</label>
+                        <select name="idunits" class="form-control">
+                            @foreach ($unit as $u)
+                                <option value="{{$u->id}}">{{$u->satuan}}</option>
+                            @endforeach
+                        </select>
+                        </div>
                     </div>
 
                     <div class="row">
                         <div class="col-md-12 px-1">
                             <div class="form-group">
-                                <label>Lokasi</label>
-                                <input type="text" class="form-control" name="lokasi" placeholder="Lokasi"
-                                    value="{{$data->lokasi}}">
+                                <label>Jumlah Barang Dibeli</label>                                
+                                <input type="text" class="form-control" name="jumlah_barang_dibeli" placeholder="Masukkan Jumlah barang" value="{{$data->jumlah_barang_dibeli}}">
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-12 px-1">
-                        <div class="form-group">
-                            <label>Alamat</label>
-                            <input type="text" class="form-control" name="alamat" placeholder="Alamat"
-                                value="{{$data->alamat}}">
-                        </div>
-                    </div>
+                    <br>
 
-                    <div class="col-md-12 px-1">
-                        <div class="form-group">
-                        <label for="exampleFormControlTextarea1" class="form-label">Jam Operasi</label>
-                        <textarea class="form-control" name="jam_operasi" rows="3">{{$data->jam_operasi}}</textarea>
+                    <div class="row">
+                        <div class="update ml-auto mr-auto">
+                            <button type="submit" class="btn btn-primary btn-round">Update Stok Keluar</button>
+                                <a href="{{url('outitems')}}" class="btn btn-warning" type="button">
+                                    Kembali</a>
                         </div>
-                    </div>
-
-                    <div class="col-md-12 px-1">
-                        <div class="form-group">
-                            <label>Telepon</label>
-                            <input type="text" class="form-control" name="telepon" placeholder="Telepon"
-                                value="{{$data->telepon}}">
-                        </div>
-                    </div>
-    
-                    <div class="col-md-12 px-1">
-                        @csrf
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Masukkan Gambar</label>
-                            <input type="file" class="form-control-file" id="foto" name="foto" value="{{$data->foto}}" >
-                            <input type="hidden" id="id" name="id" value="{{$data->id}}">
-                        </div>
-                    </div>
-    
-                </div>                
-                <div class="row">
-                    <div class="update ml-auto mr-auto">
-                        <button type="submit" class="btn btn-primary btn-round">Edit Profil</button>
-                            <a href="{{url('profiles')}}" class="btn btn-warning" type="button">
-                                Kembali
-                            </a>
                     </div>
                 </div>
-            </div>
-
-        </div>
-        </form>
+            </form>
 
         </div>
     </div>

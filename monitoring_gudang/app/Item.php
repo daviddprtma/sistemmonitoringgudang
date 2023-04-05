@@ -15,4 +15,12 @@ class Item extends Model
         return $this->belongsTo('App\Unit','units_id');
     }
 
+    public function outItem(){
+        return $this->hasMany('App\Outitem','outitems_id','id');
+    }
+
+    public function inItem(){
+        return $this->belongsTo('App\Initem','idinitems');
+    }
+
 }

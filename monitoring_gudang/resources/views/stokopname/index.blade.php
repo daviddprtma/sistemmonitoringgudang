@@ -89,8 +89,13 @@
 
 @section('content')
     <div class="container-fluid py-4">
-
-
+        <div class="col-lg-6 col-7">
+            <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
+                <a href="{{url('stokopnames/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
+                    Tambah Stok Opname
+                </a>
+            </div>
+        </div>
         <div class="row mb-4">
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                 <div class="card">
@@ -118,15 +123,14 @@
                                     {{ session('delete') }}
                                 </div>
                             @endif
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-7">
 
-                        <h6>Multi Satuan</h6>
-                        <div class="col-lg-2 col-sm-5 col-12 mt-sm-0 mt-2">
-                            <a href="{{url('units/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
-                                Tambah Multi Satuan
-                            </a>
+                            @if (session()->has('error'))
+                            <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
+                                role="alert">
+                                {{ session('error') }}
+                            </div>
+                            @endif
+                            
                         </div>
                     </div>
                     <div class="card-body px-0 pb-2">
@@ -135,38 +139,48 @@
                                 <thead>
                                     <tr>
                                         <th
+                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Nama Barang</th>                                    
+                                        <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nama Satuan</th>
+                                            Jumlah Barang
+                                        </th>
+                                        <th
+                                            class="text-right text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Aksi
+                                        </th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($data as $d)
-                                        {{-- {{ dd($m) }} --}}
-                                        <tr>
-                                          
-                                            <td class="align-middle text-sm">
-                                                <span class="text-xs font-weight-bold">{{ $d->satuan }}
-                                                </span>
-                                            </td>
-                                            <td class="align-middle ">
-                                                <div class="ms-auto text-end">
-                                                    <a href="{{url('units/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
-                                                        
-                                                        <i class="material-icons text-sm me-2">edit</i>Edit</a>
-
-                                                        @can('delete-permission', $d)
-                                                        <form method="POST" action="{{url('units/'.$d->id)}}">
-                                                            @csrf
-                                                            @method("DELETE")
-                                                            <input type="submit" value="delete" class="btn btn-link text-danger text-gradient px-3 mb-0" 
-                                                            onclick="if(!confirm('apakah anda yakin untuk menghapus data satuan ini?')) return false;">
-                                                                
-                                                        </form>
-                                                        @endcan
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    @foreach ($stokopname as $so)
+                                            <tr>                                          
+                                                <td class="align-middle text-sm">
+                                                    <span class="text-xs font-weight-bold">{{ $so->nama_barang }}
+                                                    </span>
+                                                </td>
+                                                <td class="align-middle text-sm">
+                                                    <span class="text-xs font-weight-bold">{{ $so->jumlah_barang }}
+                                                    </span>
+                                                </td>                                                
+                                                <td class="align-middle ">
+                                                    <div class="ms-auto text-end">
+                                                        <a href="{{url('stokopnames/'.$so->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
+                                                            
+                                                            <i class="material-icons text-sm me-2">edit</i>Edit</a>
+    
+                                                            @can('delete-permission', $so)
+                                                            <form method="POST" action="{{url('stokopnames/'.$so->id)}}">
+                                                                @csrf
+                                                                @method("DELETE")
+                                                                <input type="submit" value="delete" class="btn btn-link text-danger text-gradient px-3 mb-0" 
+                                                                onclick="if(!confirm('apakah anda yakin untuk menghapus data stok opname ini?')) return false;">
+                                                                    
+                                                            </form>
+                                                            @endcan
+                                                    </div>
+                                                </td>
+                                            </tr>                                            
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>

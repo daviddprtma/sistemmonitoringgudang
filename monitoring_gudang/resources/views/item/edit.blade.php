@@ -128,6 +128,16 @@
                     </div>
 
                     <div class="row">
+
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Harga</label>
+                                <input type="number" class="form-control" name="harga" placeholder="Harga Barang" min="0" value="{{$data->harga}}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-md-12 px-1">
                         <label for="exampleInputEmail1">Kategori Barang</label>
                         <select name="category_id" class="form-control">
