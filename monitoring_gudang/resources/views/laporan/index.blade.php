@@ -87,18 +87,14 @@
     </aside>
 @endsection
 
+@section('style')
 @section('content')
     <div class="container-fluid py-4">
-        <h6>Multi Satuan</h6>
+        <h6>Report</h6>
         <div class="row mb-4">
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <div>
-                            <a href="{{url('units/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
-                                Tambah Multi Satuan
-                            </a>
-                        </div>
                         @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
                                 role="alert">
@@ -125,51 +121,59 @@
                         </div>
                     </div>
                     
-                    <div class="card-body px-0 pb-2">
-                        <div class="table-responsive">
-                            <table class="table align-items-center mb-0">
+                        <div class="container">
+                            <h3>Laporan Pencatatan Stok Masuk</h3>
+                            <table class="table table-bordered" id="data-report">
                                 <thead>
                                     <tr>
-                                        <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Nama Satuan</th>
+                                        <th>Tanggal</th>
+                                        <th>Nama Barang</th>
+                                        <th>Jumlah Barang Masuk</th>
+                                        <th>Harga Barang</th>
+                                        <th>Satuan</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($data as $d)
-                                        {{-- {{ dd($m) }} --}}
                                         <tr>
-                                          
-                                            <td class="align-middle text-sm">
-                                                <span class="text-xs font-weight-bold">{{ $d->satuan }}
-                                                </span>
-                                            </td>
-                                            <td class="align-middle ">
-                                                <div class="ms-auto text-end">
-                                                    <a href="{{url('units/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
-                                                        
-                                                        <i class="material-icons text-sm me-2">edit</i>Edit</a>
-
-                                                        @can('delete-permission', $d)
-                                                        <form method="POST" action="{{url('units/'.$d->id)}}">
-                                                            @csrf
-                                                            @method("DELETE")
-                                                            <input type="submit" value="delete" class="btn btn-link text-danger text-gradient px-3 mb-0" 
-                                                            onclick="if(!confirm('apakah anda yakin untuk menghapus data satuan ini?')) return false;">
-                                                                
-                                                        </form>
-                                                        @endcan
-                                                </div>
-                                            </td>
+                                            <td>{{$d->tanggal_masuk}}</td>
+                                            <td>{{$d->item->nama_barang}}</td>
+                                            <td>{{$d->jumlah_barang_masuk}}</td>
+                                            <td>{{$d->harga_barang_masuk}}</td>
+                                            <td>{{$d->unit->satuan}}</td>
                                         </tr>
                                     @endforeach
-
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+
+                        <hr/>
+                        <div class="container">
+                            <h3>Laporan Pencatatan Stok Keluar</h3>
+                            <table class="table table-bordered" id="data-report-2">
+                                <thead>
+                                    <tr>
+                                        <th>Nama Perusahaan</th>
+                                        <th>Jumlah Barang Dibeli</th>
+                                        <th>Nama Barang</th>                                        
+                                        <th>Satuan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($data2 as $d2)
+                                        <tr>
+                                            <td>{{$d2->nama_perusahaan}}</td>
+                                            <td>{{$d2->jumlah_barang_dibeli}}</td>
+                                            <td>{{$d2->item->nama_barang}}</td>
+                                            <td>{{$d2->unit->satuan}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                 </div>
             </div>
-
         </div>
     </div>
+@endsection
 @endsection

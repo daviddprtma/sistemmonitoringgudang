@@ -107,9 +107,13 @@
                 @method("PUT")
                 <div class="row">
                     <div class="col-md-12 px-1">
-                    <label>Nama Barang</label>
-                    <input type="text" class="form-control" name="nama_barang" placeholder="Nama Barang Opname" value="{{$data->nama_barang}}">
-                    </div>
+                        <label for="exampleInputEmail1">Nama Barang</label>
+                        <select name="iditems" class="form-control">
+                            @foreach ($item as $i)
+                                <option value="{{$i->id}}">{{$i->nama_barang}}</option>
+                            @endforeach
+                        </select>
+                        </div>
                 </div>
 
                     <div class="row">

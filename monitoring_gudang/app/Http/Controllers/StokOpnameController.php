@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Item;
 use App\StokOpname;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 
 class StokOpnameController extends Controller
 {
@@ -28,7 +30,8 @@ class StokOpnameController extends Controller
     {
         //
         $data = StokOpname::all();
-        return view('stokopname.create',['data'=>$data]);
+        $item = Item::all();
+        return view('stokopname.create',['data'=>$data,'item'=> $item]);
     }
 
     /**
@@ -41,7 +44,7 @@ class StokOpnameController extends Controller
     {
         //
         $data = new StokOpname();
-        $data->nama_barang = $request->get('nama_barang');
+        $data->iditems = $request->get('iditems');
         $data->jumlah_barang = $request->get('jumlah_barang');
         $data->save();
         return redirect()->route('stokopnames.index')->with('status','Stok opname berhasil ditambahkan');
@@ -68,7 +71,8 @@ class StokOpnameController extends Controller
     {
         //
         $data = $stokopname;
-        return view('stokopname.edit',compact('data'));
+        $item = Item::all();
+        return view('stokopname.edit',compact('data','item'));
     }
 
     /**
@@ -81,7 +85,7 @@ class StokOpnameController extends Controller
     public function update(Request $request, StokOpname $stokopname)
     {
         //
-        $stokopname->nama_barang = $request->get('nama_barang');
+        $stokopname->iditems = $request->get('iditems');
         $stokopname->jumlah_barang = $request->get('jumlah_barang');
         $stokopname->save();
         return redirect()->route('stokopnames.index')->with('sunting','Stok Opname berhasil diupdate');
@@ -106,5 +110,12 @@ class StokOpnameController extends Controller
             $msg = "Data Stok Opname tidak dapat dihapus. Pastikan data stok opname ini tidak terikat dengan data yang lain";
             return redirect()->route('stokopnames.index')->with('error',$msg);
         }
+    }
+
+    public function invoicePdfStokOpname($id){
+        $stokopname = StokOpname::find($id);
+        $pdf = PDF::loadview('stokopname.invoicestokopname',['stokopname'=>$stokopname])->setOption(['defaultFont'=>'sans-serif']);
+        $name = "laporanstokopname".$stokopname["created_at"].".pdf";
+        return $pdf->download($name);
     }
 }

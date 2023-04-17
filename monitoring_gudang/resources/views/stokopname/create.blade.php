@@ -106,16 +106,21 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-12 px-1">
-                    <label>Nama Barang</label>
-                    <input type="text" class="form-control" name="nama_barang" placeholder="Nama Barang Opname">
+                    <label for="exampleInputEmail1">Nama Barang</label>
+                    <select name="iditems" class="form-control">
+                        @foreach ($item as $i)
+                            <option value="{{$i->id}}">{{$i->nama_barang}}</option>
+                        @endforeach
+                    </select>
                     </div>
                 </div>
+
 
                     <div class="row">
                         <div class="col-md-12 px-1">
                             <div class="form-group">
                                 <label>Jumlah Barang Opname</label>
-                                <input type="text" class="form-control" name="jumlah_barang" placeholder="Jumlah Barang Opname">
+                                <input type="number" class="form-control" name="jumlah_barang" placeholder="Jumlah Barang Opname" min="0">
                             </div>
                         </div>
                     </div>

@@ -38,22 +38,22 @@
         rel="stylesheet" />
         <!-- BEGIN THEME STYLES -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+  
+
 <!-- END THEME STYLES -->
 
     @yield('style')
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
+    
     @yield('aside')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
         <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
             data-scroll="true">
             <div class="container-fluid py-1 px-3">
-                <nav aria-label="breadcrumb">
-                    
-                    <h6 class="font-weight-bolder mb-0">PT Berkat Keselamatan Dunia</h6>
-                </nav>
 
                     @if (Route::has('login'))
                     <a class="navbar-brand" href="{{ url('dashboards') }}">
@@ -149,11 +149,11 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link text-white " href="">
+                    <a class="nav-link text-white " href="{{url('reports')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">receipt_long</i>
                         </div>
-                        <span class="nav-link-text ms-1">Transaksi</span>
+                        <span class="nav-link-text ms-1">Report</span>
                     </a>
                 </li>
 
@@ -191,9 +191,19 @@
     <script src="{{ asset('material-dashboard-master/assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
     <script src="{{ asset('material-dashboard-master/assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
     <script src="{{ asset('material-dashboard-master/assets/js/plugins/chartjs.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    
     <script>
-        var ctx = document.getElementById("chart-bars").getContext("2d");
+        $(document).ready( function () {
+             $('#data-report').DataTable();
+        });
 
+        $(document).ready( function () {
+             $('#data-report-2').DataTable();
+        });
+        var ctx = document.getElementById("chart-bars").getContext("2d");
+            
         new Chart(ctx, {
             type: "bar",
             data: {
@@ -459,7 +469,6 @@
     <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="{{ asset('material-dashboard-master/assets/js/material-dashboard.min.js?v=3.0.4') }}"></script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>

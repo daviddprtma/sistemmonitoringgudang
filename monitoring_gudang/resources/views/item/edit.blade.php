@@ -163,7 +163,7 @@
 
                     <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Update Kategori</button>
+                            <button type="submit" class="btn btn-primary btn-round">Update Stok Barang</button>
                                 <a href="{{url('items')}}" class="btn btn-warning" type="button">
                                     Kembali</a>
                         </div>

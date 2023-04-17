@@ -89,8 +89,7 @@
 
 @section('content')
     <div class="container-fluid py-4">
-
-
+        <h6>Kategori Barang</h6>
         <div class="row mb-4">
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                 <div class="card">
@@ -119,8 +118,7 @@
                                 </div>
                             @endif
 
-                            <h6>Category</h6>
-                            <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
+                            <div>
                                 <a href="{{url('categories/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
                                     Tambah Kategori
                                 </a>

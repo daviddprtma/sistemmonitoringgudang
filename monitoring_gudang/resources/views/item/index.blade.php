@@ -89,8 +89,7 @@
 
 @section('content')
     <div class="container-fluid py-4">
-
-
+        <h6>Stok Barang</h6>
         <div class="row mb-4">
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                 <div class="card">
@@ -125,10 +124,8 @@
                                 {{ session('error') }}
                             </div>
                             @endif
-                            <div class="col-lg-6 col-7">
-
-                                <h6>Stok Barang</h6>
-                                <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
+                            <div>
+                                <div>
                                     <a href="{{url('items/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
                                         Tambah Stok Barang
                                     </a>

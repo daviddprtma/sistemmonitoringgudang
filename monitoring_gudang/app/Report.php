@@ -4,12 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class StokOpname extends Model
+class Report extends Model
 {
     //
-    protected $table = 'opnames';
-
     public function item(){
         return $this->belongsTo('App\Item','iditems');
     }
+
+    public function unit(){
+        return $this->belongsTo('App\Unit','units_id');
+    }
+
 }

@@ -89,17 +89,18 @@
 
 @section('content')
     <div class="container-fluid py-4">
+        <h6>Stok Opname</h6>
         <div class="col-lg-6 col-7">
-            <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
-                <a href="{{url('stokopnames/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
-                    Tambah Stok Opname
-                </a>
-            </div>
         </div>
         <div class="row mb-4">
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                 <div class="card">
                     <div class="card-header pb-0">
+                        <div>
+                            <a href="{{url('stokopnames/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
+                                Tambah Stok Opname
+                            </a>
+                        </div>
                         @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
                                 role="alert">
@@ -155,7 +156,7 @@
                                     @foreach ($stokopname as $so)
                                             <tr>                                          
                                                 <td class="align-middle text-sm">
-                                                    <span class="text-xs font-weight-bold">{{ $so->nama_barang }}
+                                                    <span class="text-xs font-weight-bold">{{ $so->item->nama_barang }}
                                                     </span>
                                                 </td>
                                                 <td class="align-middle text-sm">
@@ -177,6 +178,10 @@
                                                                     
                                                             </form>
                                                             @endcan
+
+                                                            <a href="{{url('invoicepdfstokopname/'.$so->id)}}" class="btn btn-link text-dark px-3 mb-0">
+                                                            
+                                                            <i class="material-icons text-sm me-2">picture_as_pdf</i>Cetak</a>
                                                     </div>
                                                 </td>
                                             </tr>                                            

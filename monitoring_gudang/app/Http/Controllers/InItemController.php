@@ -18,7 +18,8 @@ class InItemController extends Controller
     {
         //
         $initem = InItem::all();
-        return view('initem.index',['initem'=>$initem]);
+        $item = Item::all();
+        return view('initem.index',['initem'=>$initem, 'item'=>$item]);
     }
 
     /**
@@ -30,8 +31,9 @@ class InItemController extends Controller
     {
         //
         $data = InItem::all();
+        $item = Item::all();
         $unit = Unit::all();
-        return view('initem.create',['data'=>$data,'unit'=>$unit]);
+        return view('initem.create',['data'=>$data,'unit'=>$unit,'item'=>$item]);
     }
 
     /**
@@ -45,9 +47,9 @@ class InItemController extends Controller
         //
         $data = new InItem();
         $data->tanggal_masuk = $request->get('tanggal_masuk');
-        $data->nama_barang_masuk = $request->get('nama_barang_masuk');
         $data->jumlah_barang_masuk = $request->get('jumlah_barang_masuk');
         $data->idunits = $request->get('idunits');
+        $data->iditems = $request->get('iditems');
         $data->harga_barang_masuk = $request->get('harga_barang_masuk');
         $data->save();
         return redirect()->route('initems.index')->with('status','Barang Masuk berhasil ditambahkan');
@@ -75,7 +77,8 @@ class InItemController extends Controller
         //
         $data = $initem;
         $unit = Unit::all();
-        return view('initem.edit',['data'=>$data, 'unit'=>$unit]);
+        $item = Item::all();
+        return view('initem.edit',['data'=>$data, 'unit'=>$unit, 'item'=>$item]);
     }
 
     /**
@@ -89,9 +92,10 @@ class InItemController extends Controller
     {
         //
         $initem->tanggal_masuk = $request->get('tanggal_masuk');
-        $initem->nama_barang_masuk = $request->get('nama_barang_masuk');
         $initem->jumlah_barang_masuk = $request->get('jumlah_barang_masuk');
         $initem->idunits = $request->get('idunits');
+        $initem->iditems = $request->get('iditems');
+        $initem->harga_barang_masuk = $request->get('harga_barang_masuk');
         $initem->save();
         return redirect()->route('initems.index')->with('sunting','Pencatatan stok masuk telah diupdate');
     }

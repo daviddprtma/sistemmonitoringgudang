@@ -34,12 +34,24 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('units','UnitController');
 
     Route::resource('stokopnames','StokOpnameController');
+
+    Route::resource('reports','ReportController');
     
     Route::post('/category/changeFoto','CategoryController@changeFoto')
     ->name('categories.changeFoto');
     
     Route::post('/item/changeFotoBarang','ItemController@changeFotoBarang')
     ->name('items.changeFotoBarang');
+
+    Route::get("invoicepdf/{id}",'OutItemController@invoicePdf')
+    ->name('invoicepdf');
+
+    Route::get("invoicepdfstokopname/{id}",'StokOpnameController@invoicePdfStokOpname')
+    ->name('invoicepdfstokopname');
+
+    Route::get('/','ReportController@index');
+
+    Route::get('/report','ReportController@dataReport');
 });
 
 Auth::routes(['verify' => true]);

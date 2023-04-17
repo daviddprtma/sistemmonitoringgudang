@@ -89,11 +89,10 @@
 
 @section('content')
     <div class="container-fluid py-4">
-
-
         <div class="row mb-4">
+            <h6>Dashboard</h6>
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
-                <div class="card">
+                <div class="card">                    
                     <div class="card-header pb-0">
                         @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"

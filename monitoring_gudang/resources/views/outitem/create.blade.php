@@ -98,6 +98,7 @@
 
 @section('content')
     <div class="container-fluid px-2 px-md-4">
+        <h6>Tambahkan Barang Keluar</h6>
         <div class="page-header min-height-100 border-radius-xl mt-4"
             style="background-image: url('https://images.unsplash.com/photo-1531512073830-ba890ca4eba2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80');">
             <span class="mask  bg-gradient-primary  opacity-6"></span>
@@ -115,6 +116,7 @@
                         @endforeach
                     </select>
                     </div>
+                </div>
 
                     <div class="row">
 
@@ -148,7 +150,7 @@
 
                     <div class="row">
                         <div class="update ml-auto mr-auto">
-                            <button type="submit" class="btn btn-primary btn-round">Kirim</button>
+                            <button type="submit" class="btn btn-primary btn-round">Submit</button>
                                 <a href="{{url('outitems')}}" class="btn btn-warning" type="button">
                                     Kembali</a>
                         </div>

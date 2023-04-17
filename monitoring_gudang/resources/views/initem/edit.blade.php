@@ -112,14 +112,16 @@
                     </div>
                 </div>
 
-                    <div class="row">
-                        <div class="col-md-12 px-1">
-                            <div class="form-group">
-                                <label>Nama Barang Masuk</label>
-                                <input type="text" class="form-control" name="nama_barang_masuk" placeholder="Nama Barang Masuk" value="{{$data->nama_barang_masuk}}">
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-md-12 px-1">
+                    <label for="exampleInputEmail1">Nama Barang Masuk</label>
+                    <select name="iditems" class="form-control">
+                        @foreach ($item as $i)
+                            <option value="{{$i->id}}">{{$i->nama_barang}}</option>
+                        @endforeach
+                    </select>
                     </div>
+                </div>
 
                     <div class="row">
                         <div class="col-md-12 px-1">
@@ -137,6 +139,15 @@
                                         <option value="{{$u->id}}">{{$u->satuan}}</option>
                                     @endforeach
                                 </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 px-1">
+                            <div class="form-group">
+                                <label>Harga Barang Masuk</label>                                
+                                <input type="text" class="form-control" name="harga_barang_masuk" placeholder="Harga Barang Masuk" value="{{$data->harga_barang_masuk}}">
                             </div>
                         </div>
                     </div>

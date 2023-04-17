@@ -21,4 +21,5 @@ class InItem extends Model
     public function item(){
         return $this->belongsTo('App\Item','iditems');
     }
+    
 }

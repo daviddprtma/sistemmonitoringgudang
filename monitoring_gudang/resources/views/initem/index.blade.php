@@ -89,17 +89,16 @@
 
 @section('content')
     <div class="container-fluid py-4">
-        <div class="col-lg-6 col-7">
-            <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
-                <a href="{{url('initems/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
-                    Tambah Barang Masuk
-                </a>
-            </div>
-        </div>
+        <h6>Pencatatan Stok Masuk</h6>
         <div class="row mb-4">
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
                 <div class="card">
                     <div class="card-header pb-0">
+                        <div>
+                            <a href="{{url('initems/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
+                                Tambah Barang Masuk
+                            </a>
+                        </div>
                         @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
                                 role="alert">
@@ -171,7 +170,7 @@
                                                     </span>
                                                 </td>
                                                 <td class="align-middle text-sm">
-                                                    <span class="text-xs font-weight-bold">{{ $i->nama_barang_masuk }}
+                                                    <span class="text-xs font-weight-bold">{{ $i->item->nama_barang}}
                                                     </span>
                                                 </td>                                                
                                                 <td class="align-middle text-sm">

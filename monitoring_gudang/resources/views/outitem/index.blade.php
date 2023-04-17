@@ -89,18 +89,16 @@
 
 @section('content')
     <div class="container-fluid py-4">
-        <div class="col-lg-6 col-7">
-            <div class="col-lg-3 col-sm-6 col-12 mt-sm-0 mt-2">
-                <a href="{{url('outitems/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
-                    Kirim Barang
-                </a>
-            </div>
-        </div>
-
+        <h6>Pencatatan Stok Keluar</h6>
         <div class="row mb-4">
             <div class="col-lg-12 col-md-12 mb-md-0 mb-4">
-                <div class="card">
+                <div class="card">                        
                     <div class="card-header pb-0">
+                        <div>
+                            <a href="{{url('outitems/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
+                                Tambahkan Barang Keluar
+                            </a>
+                        </div>    
                         @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
                                 role="alert">
@@ -158,7 +156,11 @@
                                             Nama Perusahaan
                                         </th>
                                         <th
-                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            class="text-center text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Total Harga
+                                        </th>
+                                        <th
+                                            class="text-right text-xxs font-weight-bolder opacity-7 ps-2">
                                             Aksi
                                         </th>                                           
                                     </tr>
@@ -184,12 +186,16 @@
                                                 <td class="align-middle text-sm">
                                                     @currency($d->item->harga)
                                                 </td>
-
+                                                
                                                 <td class="align-middle text-sm">
                                                     <span class="text-xs font-weight-bold">{{ $d->nama_perusahaan }}
                                                     </span>
                                                 </td>
 
+                                                <td class="align-middle text-sm">
+                                                    @currency($d->item->harga * $d->jumlah_barang_dibeli)
+                                                </td>
+                                                                                
                                                 <td class="align-middle ">
                                                     <div class="ms-auto text-end">
                                                         <a href="{{url('outitems/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
@@ -204,6 +210,11 @@
                                                                 onclick="if(!confirm('apakah anda yakin untuk menghapus data pencatatan stok keluar ini?')) return false;">
                                                             </form>
                                                             @endcan
+
+                                                            <a href="{{url('invoicepdf/'.$d->id)}}" class="btn btn-link text-dark px-3 mb-0">
+                                                            
+                                                                <i class="material-icons text-sm me-2">picture_as_pdf</i>Cetak</a>
+        
                                                     </div>
                                                 </td>
                                             </tr>

@@ -1,10 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Item;
 use App\OutItem;
 use App\Unit;
+use Barryvdh\DomPDF\Facade\Pdf as PDF;
 use Illuminate\Http\Request;
 
 class OutItemController extends Controller
@@ -29,7 +28,7 @@ class OutItemController extends Controller
         $data->idunits = $request->get('idunits');
         $data->jumlah_barang_dibeli = $request->get('jumlah_barang_dibeli');
         $data->save();
-        return redirect()->route('outitems.index')->with('status','Barang berhasil ditambahkan');
+        return redirect()->route('outitems.index')->with('status','Sukses menambah barang');
     }
 
     public function edit(OutItem $outitem){
@@ -55,11 +54,18 @@ class OutItemController extends Controller
         try{
             $res = OutItem::find($id);
             $res->delete();
-            return redirect()->route('outitems.index')->with('delete','Pencatatan Stok Keluar berhasil dihapus');
+            return redirect()->route('outitems.index')->with('delete','1 item telah dihapus');
         }
         catch(\PDOException $e){
             $msg = "Pencatatan Stok Keluar tidak dapat dihapus.";
             return redirect()->route('outitems.index')->with('error',$msg);
         }
+    }
+
+    public function invoicePdf($id){
+        $outitem = OutItem::find($id);
+        $pdf = PDF::loadview('outitem.invoice',['outitem'=>$outitem])->setOption(['defaultFont'=>'sans-serif']);
+        $name = "laporan-stok-keluar".$outitem["nama_perusahaan"].$outitem["created_at"].".pdf";
+        return $pdf->download($name);
     }
 }
