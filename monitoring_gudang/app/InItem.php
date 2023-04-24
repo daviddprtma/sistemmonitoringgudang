@@ -9,6 +9,7 @@ class InItem extends Model
 {
     //
     protected $table = 'initems';
+    protected $fillable = ['tanggal_masuk','iditems','jumlah_barang_masuk','harga_barang_masuk','idunits'];
 
     public function getCreatedAtAtribute(){
         return Carbon::parse($this->attributes['tanggalMasuk'])->translatedFormat('l, d F Y');

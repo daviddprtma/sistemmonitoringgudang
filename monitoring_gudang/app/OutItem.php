@@ -8,7 +8,7 @@ class OutItem extends Model
 {
     //
     protected $table = 'outitems';
-    
+    protected $fillable = ['stok_barang', 'nama_perusahaan','jumlah_barang_dibeli','iditems','idunits'];
     public function item(){
         return $this->belongsTo('App\Item','iditems');
     }

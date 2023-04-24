@@ -6,6 +6,7 @@ use App\Item;
 use App\StokOpname;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf as PDF;
+use App;
 
 class StokOpnameController extends Controller
 {

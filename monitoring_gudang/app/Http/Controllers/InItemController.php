@@ -45,13 +45,18 @@ class InItemController extends Controller
     public function store(Request $request)
     {
         //
-        $data = new InItem();
-        $data->tanggal_masuk = $request->get('tanggal_masuk');
-        $data->jumlah_barang_masuk = $request->get('jumlah_barang_masuk');
-        $data->idunits = $request->get('idunits');
-        $data->iditems = $request->get('iditems');
-        $data->harga_barang_masuk = $request->get('harga_barang_masuk');
-        $data->save();
+        $barang = Item::find($request->iditems);
+        
+        InItem::create([
+                'tanggal_masuk'=>$request->tanggal_masuk,
+                'iditems'=>$request->iditems,
+                'jumlah_barang_masuk'=>$request->jumlah_barang_masuk,
+                'harga_barang_masuk'=>$request->harga_barang_masuk,
+                'idunits'=>$request->idunits
+        ]);
+        
+        $barang->stok_barang += $request->jumlah_barang_masuk;
+        $barang->save();
         return redirect()->route('initems.index')->with('status','Barang Masuk berhasil ditambahkan');
     }
 

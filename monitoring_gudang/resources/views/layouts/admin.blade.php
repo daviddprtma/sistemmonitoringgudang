@@ -202,6 +202,22 @@
         $(document).ready( function () {
              $('#data-report-2').DataTable();
         });
+
+        $(document).ready( function () {
+             $('#category').DataTable();
+        });
+
+        $(document).ready( function () {
+             $('#item').DataTable();
+        });
+
+        $(document).ready( function () {
+             $('#unit').DataTable();
+        });
+
+        $(document).ready( function () {
+             $('#stokopname').DataTable();
+        });
         var ctx = document.getElementById("chart-bars").getContext("2d");
             
         new Chart(ctx, {
