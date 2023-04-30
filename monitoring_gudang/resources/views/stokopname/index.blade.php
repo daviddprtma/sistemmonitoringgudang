@@ -97,9 +97,11 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div>
+                            @can('add-permission')
                             <a href="{{url('stokopnames/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
                                 Tambah Stok Opname
                             </a>
+                            @endcan
                         </div>
                         @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
@@ -165,10 +167,10 @@
                                                 </td>                                                
                                                 <td class="align-middle ">
                                                     <div class="ms-auto text-end">
+                                                        @can('edit-permission', $so)
                                                         <a href="{{url('stokopnames/'.$so->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
-                                                            
                                                             <i class="material-icons text-sm me-2">edit</i>Edit</a>
-    
+                                                        @endcan
                                                             @can('delete-permission', $so)
                                                             <form method="POST" action="{{url('stokopnames/'.$so->id)}}">
                                                                 @csrf

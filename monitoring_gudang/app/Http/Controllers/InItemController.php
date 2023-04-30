@@ -42,9 +42,10 @@ class InItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, InItem $initem)
     {
         //
+        $this->authorize('add-permission',$initem);
         $barang = Item::find($request->iditems);
         
         InItem::create([
@@ -96,6 +97,7 @@ class InItemController extends Controller
     public function update(Request $request, InItem $initem)
     {
         //
+        $this->authorize('edit-permission',$initem);
         $initem->tanggal_masuk = $request->get('tanggal_masuk');
         $initem->jumlah_barang_masuk = $request->get('jumlah_barang_masuk');
         $initem->idunits = $request->get('idunits');

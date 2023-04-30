@@ -39,7 +39,24 @@
         <!-- BEGIN THEME STYLES -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-  
+    
+    <style>
+        body {
+            background: black;
+        }
+
+        .clock {
+             position: relative;
+             top: 50%;
+             left: 50%;
+             transform: translateX(-50%) translateY(-50%);
+             color: black;
+             font-size: 16px;
+             font-family: Orbitron;
+             letter-spacing: 7px;
+        }
+
+    </style>
 
 <!-- END THEME STYLES -->
 
@@ -66,8 +83,8 @@
                                     aria-disabled="true">Login</a> </p>
                         </div>
                     @endif
-
-                    <span class="username username-hide-on-mobile">{{Auth::user()->name}}</span>                    
+                    <span class="username username-hide-on-mobile"> <div id="MyClockDisplay" class="clock" onload="showTime()"></div> {{Auth::user()->name}} </span>                    
+                    
                 </div>
             </div>
         </nav>
@@ -218,6 +235,38 @@
         $(document).ready( function () {
              $('#stokopname').DataTable();
         });
+
+        function showTime(){
+        var date = new Date();
+        var h = date.getHours(); // 0 - 23
+        var m = date.getMinutes(); // 0 - 59
+        var s = date.getSeconds(); // 0 - 59
+        var session = "AM";
+    
+        if(h == 0){
+            h = 12;
+        }
+    
+        if(h > 12){
+            h = h - 12;
+            session = "PM";
+        }
+    
+        h = (h < 10) ? "0" + h : h;
+        m = (m < 10) ? "0" + m : m;
+        s = (s < 10) ? "0" + s : s;
+    
+        var time = h + ":" + m + ":" + s + " " + session;
+        document.getElementById("MyClockDisplay").innerText = time;
+        document.getElementById("MyClockDisplay").textContent = time;
+    
+        setTimeout(showTime, 1000);
+    
+}
+
+        showTime();
+
+        
         var ctx = document.getElementById("chart-bars").getContext("2d");
             
         new Chart(ctx, {

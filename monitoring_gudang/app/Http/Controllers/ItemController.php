@@ -41,9 +41,10 @@ class ItemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Item $item)
     {
         //
+        $this->authorize('add-permission',$item);
         $data = new Item();
         $file = $request ->file('gambar_stok');
         $imgFolder = 'images';
@@ -95,6 +96,7 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         //
+        $this->authorize('edit-permission',$item);
         $item->nama_barang = $request->get('nama_barang');
         $item->stok_barang = $request->get('stok_barang');
         $item->harga = $request->get('harga');

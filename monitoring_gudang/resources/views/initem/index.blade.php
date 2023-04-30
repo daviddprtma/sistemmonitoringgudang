@@ -95,9 +95,11 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div>
+                            @can('add-permission')
                             <a href="{{url('initems/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
                                 Tambah Barang Masuk
                             </a>
+                            @endcan
                         </div>
                         @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
@@ -154,10 +156,12 @@
                                             Satuan Barang</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Harga Barang Masuk</th>         
+                                            Harga Barang Masuk</th>
+                                        @can('aksi')
                                         <th
                                             class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Aksi</th>                  
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -185,12 +189,14 @@
                                                     <span class="text-xs font-weight-bold">@currency($i->harga_barang_masuk)
                                                     </span>
                                                 </td>
+
+                                                @can('aksi')
                                                 <td class="align-middle ">
                                                     <div class="ms-auto text-end">
-                                                        <a href="{{url('initems/'.$i->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
-                                                            
+                                                        @can('edit-permission', $d)
+                                                        <a href="{{url('initems/'.$i->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">             
                                                             <i class="material-icons text-sm me-2">edit</i>Edit</a>
-    
+                                                        @endcan
                                                             @can('delete-permission', $i)
                                                             <form method="POST" action="{{url('initems/'.$i->id)}}">
                                                                 @csrf
@@ -202,6 +208,7 @@
                                                             @endcan
                                                     </div>
                                                 </td>
+                                                @endcan
                                             </tr>                                            
                                     @endforeach
                                 </tbody>

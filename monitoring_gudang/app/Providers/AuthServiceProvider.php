@@ -26,12 +26,34 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        Gate::define('add-permission',function($user){
+            return ($user->role == 'admin'
+            ? Response::allow()
+            : Response::deny('Anda harus menjadi admin terlebih dahulu')
+        );
+        });
+
         Gate::define('delete-permission',function($user){
             return ($user->role == 'admin'
             ? Response::allow()
             : Response::deny('Anda harus menjadi admin terlebih dahulu')
         );
         });
+
+        Gate::define('edit-permission',function($user){
+            return ($user->role == 'admin'
+            ? Response::allow()
+            : Response::deny('Anda harus menjadi admin terlebih dahulu')
+        );
+        });
+
+        Gate::define('aksi',function($user){
+            return ($user->role == 'admin'
+            ? Response::allow()
+            : Response::deny('Anda harus menjadi admin terlebih dahulu')
+        );
+        });
+
 
         //
     }

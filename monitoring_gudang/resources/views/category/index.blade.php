@@ -119,9 +119,11 @@
                             @endif
 
                             <div>
+                                @can('add-permission')
                                 <a href="{{url('categories/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
                                     Tambah Kategori
                                 </a>
+                                @endcan
                             </div>
 
                             <div class="col-lg-6 col-7">
@@ -152,9 +154,11 @@
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Deskripsi Kategori</th>
 
+                                        @can('aksi')
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Aksi</th>
+                                        @endcan
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -211,12 +215,13 @@
                                             </td>
                                           
 
+                                            @can('aksi', $d)                                            
                                             <td class="align-middle ">
                                                 <div class="ms-auto text-end">
+                                                    @can('edit-permission',$d)
                                                     <a href="{{url('categories/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
-                                                        
                                                         <i class="material-icons text-sm me-2">edit</i>Edit</a>
-
+                                                    @endcan
                                                         @can('delete-permission', $d)
                                                             
                                                         <form method="POST" action="{{url('categories/'.$d->id)}}">
@@ -230,6 +235,7 @@
                                                         @endcan
                                                 </div>
                                             </td>
+                                            @endcan
                                         </tr>
                                     @endforeach
 

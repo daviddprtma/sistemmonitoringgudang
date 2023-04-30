@@ -37,8 +37,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Category $category)
     {
+        $this->authorize('add-permission', $category);
         //
         $data = new Category();
 
@@ -89,6 +90,7 @@ class CategoryController extends Controller
     public function update(Request $request, Category $category)
     {
         //
+        $this->authorize('edit-permission',$category);
         $category->nama_kategori = $request->get('nama_kategori');
         $category->deskripsi_barang = $request->get('deskripsi_barang');
         $category->save();

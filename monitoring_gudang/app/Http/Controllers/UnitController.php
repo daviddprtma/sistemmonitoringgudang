@@ -38,9 +38,10 @@ class UnitController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Unit $unit)
     {
         //
+        $this->authorize('add-permission',$unit);
         $data = new Unit();
         $data->satuan = $request->get('satuan');
         $data->save();
@@ -81,6 +82,7 @@ class UnitController extends Controller
     public function update(Request $request, Unit $unit)
     {
         //
+        $this->authorize('edit-permission',$unit);
         $unit->satuan = $request->get('satuan');
         $unit->save();
         return redirect()->route('units.index')->with('sunting',"Satuan berhasil diupdate");

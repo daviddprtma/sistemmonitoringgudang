@@ -41,9 +41,10 @@ class StokOpnameController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, StokOpname $stokopname)
     {
         //
+        $this->authorize('add-permission',$stokopname);
         $data = new StokOpname();
         $data->iditems = $request->get('iditems');
         $data->jumlah_barang = $request->get('jumlah_barang');
@@ -86,6 +87,7 @@ class StokOpnameController extends Controller
     public function update(Request $request, StokOpname $stokopname)
     {
         //
+        $this->authorize('edit-permission',$stokopname);
         $stokopname->iditems = $request->get('iditems');
         $stokopname->jumlah_barang = $request->get('jumlah_barang');
         $stokopname->save();

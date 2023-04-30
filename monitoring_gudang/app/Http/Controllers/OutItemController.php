@@ -21,7 +21,8 @@ class OutItemController extends Controller
         return view('outitem.create',['data'=>$data, 'item'=>$item, 'unit'=>$unit]);
     }
 
-    public function store (Request $request){
+    public function store (Request $request, OutItem $outitem){
+        $this->authorize('add-permission',$outitem);
         $barang = Item::find($request->iditems);
         if($barang->stok_barang < $request->jumlah_barang_dibeli){
             return redirect()->route('outitems.index')->with('error','Jumlah barang melebihi stok yang tersedia');
@@ -49,6 +50,7 @@ class OutItemController extends Controller
     }
 
     public function update(Request $request, OutItem $outitem){
+        $this->authorize('edit-permission',$outitem);
         $outitem-> iditems = $request->get('iditems');
         $outitem->nama_perusahaan = $request->get('nama_perusahaan');
         $outitem->idunits = $request->get('idunits');

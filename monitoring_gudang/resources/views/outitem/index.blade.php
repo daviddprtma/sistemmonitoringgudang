@@ -95,9 +95,11 @@
                 <div class="card">                        
                     <div class="card-header pb-0">
                         <div>
+                            @can('add-permission')
                             <a href="{{url('outitems/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
                                 Tambahkan Barang Keluar
                             </a>
+                            @endcan
                         </div>    
                         @if (session()->has('success'))
                             <div class="alert alert-primary alert-dismissible fade show mt-1 d-flex justify-content-center"
@@ -159,10 +161,12 @@
                                             class="text-center text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Total Harga
                                         </th>
+                                        
                                         <th
                                             class="text-right text-xxs font-weight-bolder opacity-7 ps-2">
                                             Aksi
                                         </th>                                           
+                                        
                                     </tr>
                                 </thead>
                                 <tbody>                                
@@ -195,12 +199,14 @@
                                                 <td class="align-middle text-sm">
                                                     @currency($d->item->harga * $d->jumlah_barang_dibeli)
                                                 </td>
-                                                                                
+                                                     
+                                                
                                                 <td class="align-middle ">
                                                     <div class="ms-auto text-end">
-                                                        <a href="{{url('outitems/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
-                                                            
+                                                        @can('edit-permission', $d)
+                                                        <a href="{{url('outitems/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">     
                                                             <i class="material-icons text-sm me-2">edit</i>Edit</a>
+                                                        @endcan
     
                                                             @can('delete-permission', $d)
                                                             <form method="POST" action="{{url('outitems/'.$d->id)}}">
@@ -217,6 +223,7 @@
         
                                                     </div>
                                                 </td>
+                                                
                                             </tr>
                                     @endforeach
                                 </tbody>
