@@ -261,11 +261,8 @@
         document.getElementById("MyClockDisplay").textContent = time;
     
         setTimeout(showTime, 1000);
-    
 }
-
         showTime();
-
         
         var ctx = document.getElementById("chart-bars").getContext("2d");
             

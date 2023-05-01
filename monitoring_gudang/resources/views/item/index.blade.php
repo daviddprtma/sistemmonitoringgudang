@@ -170,7 +170,7 @@
                                             <td>
                                                 <img src="{{asset('images/'.$d->gambar_stok)}}" height="50px">
                                                 
-                                                <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-xs btn-default">
+                                                <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-xs btn-default" style="background: turquoise">
                                                     Ubah Gambar</a>
                                                 <div class="modal fade" id="modalChange_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
                                                     
