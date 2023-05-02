@@ -193,7 +193,7 @@
                                                 @can('aksi')
                                                 <td class="align-middle ">
                                                     <div class="ms-auto text-end">
-                                                        @can('edit-permission', $d)
+                                                        @can('edit-permission', $i)
                                                         <a href="{{url('initems/'.$i->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">             
                                                             <i class="material-icons text-sm me-2">edit</i>Edit</a>
                                                         @endcan

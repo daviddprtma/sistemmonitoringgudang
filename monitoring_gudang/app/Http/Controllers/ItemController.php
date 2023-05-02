@@ -80,10 +80,6 @@ class ItemController extends Controller
     public function edit(Item $item)
     {
         //
-        $data = $item;
-        $cat = Category::all();
-        $unit = Unit::all();
-        return view('item.edit',compact('data','cat','unit'));
     }
 
     /**
@@ -96,14 +92,6 @@ class ItemController extends Controller
     public function update(Request $request, Item $item)
     {
         //
-        $this->authorize('edit-permission',$item);
-        $item->nama_barang = $request->get('nama_barang');
-        $item->stok_barang = $request->get('stok_barang');
-        $item->harga = $request->get('harga');
-        $item->category_id = $request->get('category_id');
-        $item->units_id = $request->get('units_id');
-        $item->save();
-        return redirect()->route('items.index')->with('sunting',"Barang berhasil diupdate");
     }
 
     /**

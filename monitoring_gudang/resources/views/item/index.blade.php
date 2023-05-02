@@ -248,11 +248,6 @@
                                             @can('aksi')
                                             <td class="align-middle ">
                                                 <div class="ms-auto text-end">
-                                                    @can('edit-permission', $d)
-                                                    <a href="{{url('items/'.$d->id.'/edit')}}" class="btn btn-link text-dark px-3 mb-0">
-                                                        <i class="material-icons text-sm me-2">edit</i>Edit</a>
-                                                    @endcan
-
                                                         @can('delete-permission', $d)
                                                         <form method="POST" action="{{url('items/'.$d->id)}}">
                                                             @csrf

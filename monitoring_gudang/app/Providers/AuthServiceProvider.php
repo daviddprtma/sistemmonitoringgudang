@@ -54,7 +54,12 @@ class AuthServiceProvider extends ServiceProvider
         );
         });
 
-
+        Gate::define('multisatuan',function($user){
+            return ($user->role == 'admin'
+            ? Response::allow()
+            : Response::deny('Anda harus menjadi admin terlebih dahulu')
+        );
+        });
         //
     }
 }

@@ -147,6 +147,7 @@
                     </a>
                 </li>
 
+                @can('multisatuan')
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{url('units')}}">
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
@@ -155,6 +156,7 @@
                         <span class="nav-link-text ms-1">Multi Satuan</span>
                     </a>
                 </li>
+                @endcan
 
                 <li class="nav-item">
                     <a class="nav-link text-white " href="{{url('stokopnames')}}">
