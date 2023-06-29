@@ -108,6 +108,16 @@
                 @csrf
                 @method("PUT")
                 <div class="row">
+
+                    <div class="col-md-12 px-1">
+                        <div class="form-group">
+                            <label>Tanggal Keluar</label>
+                            <input type="date" class="form-control" name="tanggal_keluar" value="{{$data->tanggal_keular}}">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-12 px-1">
                         <label for="exampleInputEmail1">Nama Barang</label>
                         <select name="iditems" class="form-control">

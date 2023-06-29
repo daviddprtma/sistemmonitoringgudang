@@ -7,6 +7,8 @@ use App\OutItem;
 use App\Report;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
+
 class ReportController extends Controller
 {
     /**
@@ -18,7 +20,7 @@ class ReportController extends Controller
     {
         $data = InItem::all();
         $data2 = OutItem::all();
-        return view('laporan.index',['data'=>$data,'data2'=>$data2]);
+        return view('laporan.index',['data'=>$data,'data2'=>$data2, 'postsQuery'=>$data]);
     }
 
     public function dataReport()
@@ -28,6 +30,7 @@ class ReportController extends Controller
         return DataTables::of($data,$data2)->make(true);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *

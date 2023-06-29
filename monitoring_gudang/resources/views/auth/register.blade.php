@@ -65,7 +65,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Role</label>
                         <div class="col-md-6">
-                            <input type="radio" id="admin" name="role" value="owner" required autocomplete="role">
+                            <input type="radio" id="admin" name="role" value="admin" required autocomplete="role">
                             <label for="admin">Admin</label><br>
                             <input type="radio" id="karyawan" name="role" value="karyawan">
                             <label for="karyawan">Karyawan</label><br>

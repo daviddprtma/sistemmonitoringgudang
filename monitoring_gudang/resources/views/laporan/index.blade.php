@@ -122,15 +122,41 @@
                     </div>
                     
                         <div class="container">
-                            <h3>Laporan Pencatatan Stok Masuk</h3>
+                            <h3>Laporan Pencatatan Barang</h3>
+                            <form action="{{url('/report')}}" method="GET">
+                                @csrf
+                                <br>
+                                {{-- <div class="container">
+                                    <div class="row">
+                                        <div class="container-fluid">
+                                            <div class="form-group row">
+                                                <label for="date" class="col-form-label col-sm-2">Tanggal Awal</label>
+                                                <div class="col-sm-3">
+                                                    <input type="date" class="form-control input-sm" id="tanggal_awal" name="tanggal_awal">
+                                                </div>
+                                                <label for="date" class="col-form-label col-sm-2">Tanggal Akhir</label>
+                                                <div class="col-sm-3">
+                                                    <input type="date" class="form-control input-sm" id="tanggal_akhir" name="tanggal_akhir">
+                                                </div>
+                                                <div class="col-sm-2 row">
+                                                    <button type="submit" class="btn" name="search" title="Search"><img src="https://img.icons8.com/search" width="40px" alt="">
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> --}}
+                                <br>
+                            
                             <table class="table table-bordered" id="data-report">
                                 <thead>
                                     <tr>
                                         <th>Tanggal</th>
                                         <th>Nama Barang</th>
-                                        <th>Jumlah Barang Masuk</th>
+                                        <th>Jumlah Barang</th>
                                         <th>Harga Barang</th>
                                         <th>Satuan</th>
+                                        <th>Total Harga</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -141,35 +167,22 @@
                                             <td>{{$d->jumlah_barang_masuk}}</td>
                                             <td>{{$d->harga_barang_masuk}}</td>
                                             <td>{{$d->unit->satuan}}</td>
+                                            <td>@currency($d->jumlah_barang_masuk * $d->harga_barang_masuk)</td>
                                         </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <hr/>
-                        <div class="container">
-                            <h3>Laporan Pencatatan Stok Keluar</h3>
-                            <table class="table table-bordered" id="data-report-2">
-                                <thead>
-                                    <tr>
-                                        <th>Nama Perusahaan</th>
-                                        <th>Jumlah Barang Dibeli</th>
-                                        <th>Nama Barang</th>                                        
-                                        <th>Satuan</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
                                     @foreach ($data2 as $d2)
-                                        <tr>
-                                            <td>{{$d2->nama_perusahaan}}</td>
-                                            <td>{{$d2->jumlah_barang_dibeli}}</td>
-                                            <td>{{$d2->item->nama_barang}}</td>
-                                            <td>{{$d2->unit->satuan}}</td>
-                                        </tr>
+                                    <tr>
+                                        <td>{{$d2->tanggal_keluar}}</td>
+                                        <td>{{$d2->item->nama_barang}}</td>
+                                        <td>{{$d2->jumlah_barang_dibeli}}</td>  
+                                        <td>{{$d2->item->harga}}</td>                                      
+                                        <td>{{$d2->unit->satuan}}</td>
+                                        <td>@currency($d2->item->harga * $d2->jumlah_barang_dibeli)</td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
+                        </form>
                         </div>
                 </div>
             </div>

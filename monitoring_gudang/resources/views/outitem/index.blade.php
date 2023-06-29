@@ -140,6 +140,9 @@
                                     <tr>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Tanggal Keluar</th>
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Nama Barang</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -171,7 +174,11 @@
                                 </thead>
                                 <tbody>                                
                                     @foreach ($data as $d)
-                                            <tr>                                          
+                                            <tr>                                        
+                                                <td class="align-middle text-sm">
+                                                    <span class="text-xs font-weight-bold">{{ $d->tanggal_keluar }}
+                                                    </span>
+                                                </td>                               
                                                 <td class="align-middle text-sm">
                                                     <span class="text-xs font-weight-bold">{{ $d->item->nama_barang }}
                                                     </span>

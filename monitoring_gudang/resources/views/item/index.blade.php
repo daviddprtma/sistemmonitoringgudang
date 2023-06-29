@@ -128,7 +128,7 @@
                                 <div>
                                     @can('add-permission')
                                     <a href="{{url('items/create')}}" class="btn bg-gradient-info" type="button" data-target="infoToast">
-                                        Tambah Stok Barang
+                                        Tambah Master Barang
                                     </a>
                                     @endcan
                                 </div>

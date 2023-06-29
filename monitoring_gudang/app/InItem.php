@@ -12,7 +12,7 @@ class InItem extends Model
     protected $fillable = ['tanggal_masuk','iditems','jumlah_barang_masuk','harga_barang_masuk','idunits'];
 
     public function getCreatedAtAtribute(){
-        return Carbon::parse($this->attributes['tanggalMasuk'])->translatedFormat('l, d F Y');
+        return Carbon::parse($this->attributes['tanggal_masuk'])->translatedFormat('l, d F Y');
     }
 
     public function unit(){

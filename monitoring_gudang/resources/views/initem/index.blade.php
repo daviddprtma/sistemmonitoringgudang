@@ -157,6 +157,10 @@
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                             Harga Barang Masuk</th>
+                                        
+                                        <th
+                                            class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                            Total Harga</th>
                                         @can('aksi')
                                         <th
                                             class=" text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -187,6 +191,11 @@
                                                 </td>
                                                 <td class="align-middle text-sm">
                                                     <span class="text-xs font-weight-bold">@currency($i->harga_barang_masuk)
+                                                    </span>
+                                                </td>
+                                                
+                                                <td class="align-middle text-sm">
+                                                    <span class="text-xs font-weight-bold">@currency($i->harga_barang_masuk * $i->jumlah_barang_masuk)
                                                     </span>
                                                 </td>
 

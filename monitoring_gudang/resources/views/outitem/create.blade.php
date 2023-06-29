@@ -109,6 +109,13 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-12 px-1">
+                    <label>Tanggal Keluar</label>
+                    <input type="date" class="form-control" name="tanggal_keluar">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12 px-1">
                     <label for="exampleInputEmail1">Nama Barang</label>
                     <select name="iditems" class="form-control">
                         @foreach ($item as $i)

@@ -29,6 +29,7 @@ class OutItemController extends Controller
         }
         else{
             OutItem::create([
+                'tanggal_keluar'=>$request->tanggal_keluar,
                 'iditems'=>$request->iditems,
                 'nama_perusahaan'=>$request->nama_perusahaan,
                 'idunits'=>$request->idunits,
@@ -51,6 +52,7 @@ class OutItemController extends Controller
 
     public function update(Request $request, OutItem $outitem){
         $this->authorize('edit-permission',$outitem);
+        $outitem-> tanggal_keluar = $request->get('tanggal_keluar');
         $outitem-> iditems = $request->get('iditems');
         $outitem->nama_perusahaan = $request->get('nama_perusahaan');
         $outitem->idunits = $request->get('idunits');

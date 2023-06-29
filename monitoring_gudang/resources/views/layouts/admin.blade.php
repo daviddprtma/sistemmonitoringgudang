@@ -39,6 +39,7 @@
         <!-- BEGIN THEME STYLES -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+        <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/date-1.4.1/datatables.min.css" rel="stylesheet"/>
     
     <style>
         body {
@@ -125,7 +126,7 @@
                         <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="material-icons opacity-10">table_view</i>
                         </div>
-                        <span class="nav-link-text ms-1">Stok barang</span>
+                        <span class="nav-link-text ms-1">Master Barang</span>
                     </a>
                 </li>
 
@@ -212,15 +213,16 @@
     <script src="{{ asset('material-dashboard-master/assets/js/plugins/chartjs.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/date-1.4.1/datatables.min.js"></script>
     
     <script>
-        $(document).ready( function () {
-             $('#data-report').DataTable();
-        });
+        // $(document).ready( function () {
+        //      $('#data-report').DataTable();
+        // });
 
-        $(document).ready( function () {
-             $('#data-report-2').DataTable();
-        });
+        // $(document).ready( function () {
+        //      $('#data-report-2').DataTable();
+        // });
 
         $(document).ready( function () {
              $('#category').DataTable();
@@ -237,6 +239,12 @@
         $(document).ready( function () {
              $('#stokopname').DataTable();
         });
+
+        $('#data-report').DataTable();
+
+        $('#btnFiterSubmitSearch').click(function(){
+            $('#data-report').DataTable().draw(true);
+        }); 
 
         function showTime(){
         var date = new Date();

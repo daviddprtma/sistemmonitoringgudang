@@ -16,7 +16,7 @@ class DashboardController extends Controller
     public function index()
     {
         //
-        $data = DB::table('items')->orderByDesc('harga')->limit(5)->get();
+        $data = DB::table('items')->where('stok_barang','<','10')->limit(5)->get();
         return view('dashboard.index',compact(['data']));
     }
 
