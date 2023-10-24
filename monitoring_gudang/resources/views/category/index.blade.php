@@ -125,15 +125,6 @@
                                 </a>
                                 @endcan
                             </div>
-
-                            <div class="col-lg-6 col-7">
-                            
-                                {{-- <p class="text-sm mb-0">
-                                    <i class="fa fa-check text-info" aria-hidden="true"></i> Terdapat<span
-                                        class="font-weight-bold ms-1">{{ count($cate) }} macam barang</span> pada saat
-                                    ini
-                                </p> --}}
-                            </div>
                         </div>
                     </div>
 
@@ -149,7 +140,7 @@
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Nama Kategori</th>
-                                            
+
                                         <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Deskripsi Kategori</th>
@@ -165,20 +156,20 @@
                                     @foreach ($data as $d)
                                         {{-- {{ dd($m) }} --}}
                                         <tr>
-                                            
+
                                             <td>
-                                                
+
                                                 <img src="{{asset('images/'.$d->foto_barang)}}" height="90px">
-                                                
+
                                                 <a href="#modalChange_{{$d->id}}" data-toggle="modal" class="btn btn-xs btn-default" style="background:turquoise">
                                                     Ubah Gambar</a>
                                                 <div class="modal fade" id="modalChange_{{$d->id}}" tabindex="-1" role="basic" aria-hidden="true">
-                                                    
+
                                                   <div class="modal-dialog">
                                                     <div class="modal-content" >
                                                       <form method="POST" enctype="multipart/form-data" action="{{route('categories.changeFoto')}}" role="form"  >
                                                       <div class="modal-header">
-                                                        <button type="button" class="close" 
+                                                        <button type="button" class="close"
                                                           data-dismiss="modal" aria-hidden="true"></button>
                                                         <h4 class="modal-title">Ubah Gambar untuk {{$d->nama_kategori}}</h4>
                                                       </div>
@@ -191,8 +182,8 @@
                                                                   <input type="file" class="form-control" id="foto_barang" name="foto_barang">
                                                                   <input type="hidden" id="id" name="id" value="{{$d->id}}">
                                                               </div>
-                                                          </div>                                
-                                                          
+                                                          </div>
+
                                                       </div>
 
                                                       <div class="modal-footer">
@@ -202,9 +193,9 @@
                                                       </form>
                                                     </div>
                                                   </div>
-                                                </div>           
+                                                </div>
                                           </td>
-                                          
+
 
                                             <td class="align-middle text-sm">
                                                 <span class="text-xs font-weight-bold">{{ $d->nama_kategori }}
@@ -213,9 +204,9 @@
                                             <td class="align-middle text-sm">
                                                 <span class="text-xs font-weight-bold">{{ $d->deskripsi_barang }}</span>
                                             </td>
-                                          
 
-                                            @can('aksi', $d)                                            
+
+                                            @can('aksi', $d)
                                             <td class="align-middle ">
                                                 <div class="ms-auto text-end">
                                                     @can('edit-permission',$d)
@@ -223,15 +214,15 @@
                                                         <i class="material-icons text-sm me-2">edit</i>Edit</a>
                                                     @endcan
                                                         @can('delete-permission', $d)
-                                                            
+
                                                         <form method="POST" action="{{url('categories/'.$d->id)}}">
                                                             @csrf
                                                             @method("DELETE")
-                                                            <input type="submit" value="delete" class="btn btn-link text-danger text-gradient px-3 mb-0" 
+                                                            <input type="submit" value="delete" class="btn btn-link text-danger text-gradient px-3 mb-0"
                                                             onclick="if(!confirm('apakah anda yakin untuk menghapus data kategori ini?')) return false;">
-                                                                
+
                                                         </form>
-                                                        
+
                                                         @endcan
                                                 </div>
                                             </td>

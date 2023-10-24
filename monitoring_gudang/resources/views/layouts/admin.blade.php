@@ -40,7 +40,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
         <link href="https://cdn.datatables.net/v/dt/dt-1.13.4/date-1.4.1/datatables.min.css" rel="stylesheet"/>
-    
+    {{-- PWA --}}
+    <meta name="theme-color" content="#6777ef"/>
+    <link rel="apple-touch-icon" href="{{asset('/welcomehome.jpg')}}">
+    <link rel="manifest" href="{{asset('/manifest.json')}}">
+
     <style>
         body {
             background: black;
@@ -65,7 +69,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-200">
-    
+
     @yield('aside')
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
         <!-- Navbar -->
@@ -75,7 +79,7 @@
 
                     @if (Route::has('login'))
                     <a class="navbar-brand" href="{{ url('dashboards') }}">
-                    
+
                     </a>
                     @endif
                     @if (!Auth::check())
@@ -84,8 +88,8 @@
                                     aria-disabled="true">Login</a> </p>
                         </div>
                     @endif
-                    <span class="username username-hide-on-mobile"> <div id="MyClockDisplay" class="clock" onload="showTime()"></div> {{Auth::user()->name}} </span>                    
-                    
+                    <span class="username username-hide-on-mobile"> <div id="MyClockDisplay" class="clock" onload="showTime()"></div> {{Auth::user()->name}} </span>
+
                 </div>
             </div>
         </nav>
@@ -214,7 +218,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
     <script src="https://cdn.datatables.net/v/dt/dt-1.13.4/date-1.4.1/datatables.min.js"></script>
-    
+
     <script>
         // $(document).ready( function () {
         //      $('#data-report').DataTable();
@@ -244,7 +248,7 @@
 
         $('#btnFiterSubmitSearch').click(function(){
             $('#data-report').DataTable().draw(true);
-        }); 
+        });
 
         function showTime(){
         var date = new Date();
@@ -252,30 +256,30 @@
         var m = date.getMinutes(); // 0 - 59
         var s = date.getSeconds(); // 0 - 59
         var session = "AM";
-    
+
         if(h == 0){
             h = 12;
         }
-    
+
         if(h > 12){
             h = h - 12;
             session = "PM";
         }
-    
+
         h = (h < 10) ? "0" + h : h;
         m = (m < 10) ? "0" + m : m;
         s = (s < 10) ? "0" + s : s;
-    
+
         var time = h + ":" + m + ":" + s + " " + session;
         document.getElementById("MyClockDisplay").innerText = time;
         document.getElementById("MyClockDisplay").textContent = time;
-    
+
         setTimeout(showTime, 1000);
 }
         showTime();
-        
+
         var ctx = document.getElementById("chart-bars").getContext("2d");
-            
+
         new Chart(ctx, {
             type: "bar",
             data: {

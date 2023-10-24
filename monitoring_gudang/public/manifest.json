@@ -1,0 +1,17 @@
+{
+    "name": "PT.Berkat Keselamatan Dunia",
+    "short_name": "PT.BKD",
+    "start_url": "/index.php",
+    "background_color": "#6777ef",
+    "description": "Selamat Datang di PT.Berkat Keselamatan Dunia",
+    "display": "fullscreen",
+    "theme_color": "#6777ef",
+    "icons": [
+        {
+            "src": "welcomehome.jpg",
+            "sizes": "512x512",
+            "type": "image/jpg",
+            "purpose": "any maskable"
+        }
+    ]
+}

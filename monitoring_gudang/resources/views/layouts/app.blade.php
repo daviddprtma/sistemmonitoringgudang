@@ -22,6 +22,10 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- PWA --}}
+    <meta name="theme-color" content="#6777ef"/>
+    <link rel="apple-touch-icon" href="{{asset('welcomehome.jpg')}}">
+    <link rel="manifest" href="{{asset('manifest.json')}}">
 </head>
 <body>
     <div id="app" class="main-img">
