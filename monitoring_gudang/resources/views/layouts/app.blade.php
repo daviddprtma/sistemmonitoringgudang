@@ -28,7 +28,7 @@
     <link rel="manifest" href="{{asset('manifest.json')}}">
 </head>
 <body>
-    <div id="app" class="main-img">
+    <div id="app" class="main-img" style="background-image: url(welcomehome.jpg); height: 550px;">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
