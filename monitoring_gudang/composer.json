@@ -12,6 +12,7 @@
         "barryvdh/laravel-dompdf": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^10.0",
+        "laravel/pulse": "^1.0@beta",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^4.3",
         "yajra/laravel-datatables-oracle": "~10.0"
@@ -46,7 +47,7 @@
             "Tests\\": "tests/"
         }
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "beta",
     "prefer-stable": true,
     "scripts": {
         "post-autoload-dump": [
